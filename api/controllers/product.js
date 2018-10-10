@@ -1,4 +1,4 @@
-const Product = require('../../models/product');
+const Product = require('../../models/Product');
 
 exports.getAllProducts = (req, res, next) => {
   Product.findAll()
@@ -18,9 +18,9 @@ exports.addProduct = (req, res, next) => {
     .catch(() => next());
 };
 
-exports.addProductQuantity = (req, res, next) => {
-  const { productId, color, quantityToAdd } = req.body;
-  Product.addQuantity(productId, color, quantityToAdd)
+exports.updateProductQuantity = (req, res, next) => {
+  const { productId, color, quantity } = req.body;
+  Product.updateQuantity(productId, color, quantity)
     .then(result => (result.nModified === 1 ? res.send() : next()))
     .catch(() => next());
 };
@@ -28,8 +28,14 @@ exports.addProductQuantity = (req, res, next) => {
 exports.addReview = (req, res, next) => {
   const { _id, review } = req.body;
   Product.addReview(_id, review)
-    .then(result => (result.nModified === 1 ? res.send() : next()))
-    .catch(() => next());
+    .then((result) => {
+      console.log(result);
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      next();
+    });
 };
 
 exports.deleteReview = (req, res, next) => {

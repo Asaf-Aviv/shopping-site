@@ -5,7 +5,7 @@ router.get('/products', ProductController.getAllProducts);
 
 router.get('/product/:productId', ProductController.getProductById);
 
-router.post('/product/add-quantity', ProductController.addProductQuantity);
+router.post('/product/add-quantity', ProductController.updateProductQuantity);
 
 router.post('/product/add-product', ProductController.addProduct);
 

@@ -4,9 +4,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 
-require('./db');
+require('./db/db').init();
 
-const storeAPI = require('./api/store/store');
+const storeAPI = require('./api/routes/store');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

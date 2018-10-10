@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const reviewSchema = require('./review');
+const reviewSchema = require('./Review');
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -10,6 +10,14 @@ const productSchema = new mongoose.Schema({
   },
   image: {
     type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  onSale: {
+    type: Number,
     required: true,
   },
   description: {
@@ -37,14 +45,9 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-}, { bufferCommands: false });
-
-productSchema.pre('save', function (next) {
-  this.colors.forEach((colorDoc) => {
-    colorDoc.color = colorDoc.color[0].toUpperCase() + colorDoc.color.slice(1).toLowerCase();
-  });
-  next();
 });
+
+productSchema.index({ type: 1 });
 
 productSchema.statics.findAll = function () {
   return new Promise(resolve => resolve(this.find()));
@@ -55,19 +58,26 @@ productSchema.statics.addProduct = function (product) {
     .save()));
 };
 
-productSchema.statics.addQuantity = function (productId, color, quantityToAdd) {
+productSchema.statics.updateQuantity = function (productId, color, quantity) {
   return new Promise(resolve => resolve(this.updateOne(
     { _id: productId, 'colors.color': color },
-    { $inc: { 'colors.$.quantity': quantityToAdd } },
+    { $inc: { 'colors.$.quantity': quantity } },
   )));
 };
 
-productSchema.statics.addReview = function (_id, review) {
-  return new Promise(resolve => resolve(this.updateOne(
-    { _id },
-    { $push: { reviews: { $each: [review], $position: 0 } } },
-  )));
+productSchema.methods.calculateRating = function () {
+  const total = this.reviews.reduce((sum, reviewObj) => sum + reviewObj.rating, 0);
+  this.rating = (total / this.reviews.length).toFixed(2);
 };
+
+productSchema.statics.addReview = async function (_id, review) {
+  const doc = await this.findById(_id);
+  doc.reviews.unshift(review);
+  doc.calculateRating();
+
+  return new Promise(resolve => resolve(doc.save()));
+};
+
 
 productSchema.statics.deleteReview = function (_id) {
   return new Promise(resolve => resolve(this.updateOne(
@@ -75,13 +85,6 @@ productSchema.statics.deleteReview = function (_id) {
     { $pull: { reviews: { _id } } },
   )));
 };
-
-productSchema.pre('update', function () {
-  console.log('update ? ');
-  if (this.getUpdate().reviews) {
-    console.log('update review');
-  }
-});
 
 const Product = mongoose.model('products', productSchema);
 module.exports = Product;
