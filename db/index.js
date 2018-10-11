@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const mongoDBConfig = require('./db.config');
 
 module.exports = {
-  async init() {
+  init() {
+    mongoose.connect(process.env.MONGO_URI, mongoDBConfig);
+
     if (process.env.NODE_ENV !== 'production') {
       mongoose.set('debug', true);
     }
@@ -31,7 +33,6 @@ module.exports = {
       mongoose.connect(process.env.MONGO_URI, mongoDBConfig);
     });
 
-    await mongoose.connect(process.env.MONGO_URI, mongoDBConfig);
     const db = mongoose.connection;
     return db;
   },

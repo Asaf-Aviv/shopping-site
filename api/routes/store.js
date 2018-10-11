@@ -3,16 +3,16 @@ const ProductController = require('../controllers/product');
 
 router.get('/products', ProductController.getAllProducts);
 
-router.get('/product/:productId', ProductController.getProductById);
+router.get('/products/:productId', ProductController.getProductById);
 
-router.post('/product/add-quantity', ProductController.updateProductQuantity);
+router.post('/products', ProductController.addProduct);
 
-router.post('/product/add-product', ProductController.addProduct);
+router.post('/products/quantity', ProductController.updateProductQuantity);
 
-router.post('/product/add-review', ProductController.addReview);
+router.post('/products/reviews', ProductController.addReview);
 
-router.delete('/product/delete-review', ProductController.deleteReview);
+router.delete('/products/reviews', ProductController.deleteReview);
 
-router.use((req, res) => res.status(500).send('Something went wrong.'));
+router.use((err, req, res, next) => res.status(500).send(err));
 
 module.exports = router;

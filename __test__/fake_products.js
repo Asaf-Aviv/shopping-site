@@ -23,7 +23,7 @@ exports.fakeProduct2 = {
   ],
 };
 
-exports.invalidProduct1 = {
+exports.invalidProduct = {
   image: 'shirt.jpg',
   price: 9.99,
   onSale: 25,
@@ -34,13 +34,8 @@ exports.invalidProduct1 = {
   ],
 };
 
-exports.invalidProduct2 = {
-  name: 'purse - P1',
-  price: 9.99,
-  onSale: 10,
-  type: 'purse',
-  image: 'purse.jpg',
-  colors: [
-    { color: 'blue', quantity: '5' },
-  ],
+exports.fakeReview = {
+  name: 'Jelly Roger',
+  rating: 4,
+  body: 'Amazing product!!!',
 };

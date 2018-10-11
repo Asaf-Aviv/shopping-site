@@ -67,7 +67,7 @@ productSchema.statics.updateQuantity = function (productId, color, quantity) {
 
 productSchema.methods.calculateRating = function () {
   const total = this.reviews.reduce((sum, reviewObj) => sum + reviewObj.rating, 0);
-  this.rating = (total / this.reviews.length).toFixed(2);
+  this.rating = (total / this.reviews.length).toFixed(1);
 };
 
 productSchema.statics.addReview = async function (_id, review) {
@@ -78,11 +78,10 @@ productSchema.statics.addReview = async function (_id, review) {
   return new Promise(resolve => resolve(doc.save()));
 };
 
-
-productSchema.statics.deleteReview = function (_id) {
+productSchema.statics.deleteReview = function (reviewId) {
   return new Promise(resolve => resolve(this.updateOne(
-    { 'reviews._id': _id },
-    { $pull: { reviews: { _id } } },
+    { 'reviews._id': reviewId },
+    { $pull: { reviews: { reviewId } } },
   )));
 };
 

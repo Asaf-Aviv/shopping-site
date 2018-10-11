@@ -23,6 +23,7 @@ module.exports = {
           'css-hot-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'sass-loader',
         ],
       },
@@ -58,9 +59,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: 'styles/[name].css',
+    // }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
       filename: './index.html',
