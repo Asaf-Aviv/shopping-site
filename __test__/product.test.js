@@ -12,7 +12,6 @@ const {
   fakeReview,
 } = require('./fake_products');
 
-
 describe('Product model test', () => {
   beforeAll(async () => {
     await Product.remove();
