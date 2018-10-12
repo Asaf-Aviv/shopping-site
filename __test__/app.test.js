@@ -38,9 +38,10 @@ describe('App test', () => {
       });
 
       it('Should return a product by id', async () => {
-        const product = await Product.addProduct(fakeProduct1);
+        const { _id: productId } = await Product.addProduct(fakeProduct1);
+
         await request(server)
-          .get(`/api/store/products/${product._id}`)
+          .get(`/api/store/products/${productId}`)
           .expect(200);
       });
 
@@ -89,15 +90,15 @@ describe('App test', () => {
 
     describe('DELETE routes', () => {
       it('Should delete a review', async () => {
-        let product = await Product.addProduct(fakeProduct1);
+        const product = await Product.addProduct(fakeProduct1);
         await Product.addReview(product._id, fakeReview);
 
-        product = await Product.findById(product._id);
+        const productWithReview = await Product.findById(product._id);
 
         await request(server)
           .delete('/api/store/products/reviews')
           .send({
-            reviewId: product.reviews[0]._id,
+            reviewId: productWithReview.reviews[0]._id,
           })
           .expect(200);
       });

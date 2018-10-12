@@ -36,20 +36,22 @@ describe('Product model test', () => {
   });
 
   it('Should return all products', async () => {
-    await Product.addProduct(fakeProduct1);
-    await Product.addProduct(fakeProduct2);
+    await Promise.all([
+      Product.addProduct(fakeProduct1),
+      Product.addProduct(fakeProduct2),
+    ]);
 
-    const products = await Product.findAll();
-    expect(products.length).toStrictEqual(2);
+    const numOfProducts = (await Product.findAll()).length;
+    expect(numOfProducts).toStrictEqual(2);
   });
 
   it('Should update product quantity', async () => {
-    const product = await Product.addProduct(fakeProduct1);
+    const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-    await Product.updateQuantity(product._id, 'brown', 7);
+    await Product.updateQuantity(productId, 'brown', 7);
 
-    const updatedProduct1 = await Product.findById(product._id);
-    expect(updatedProduct1.colors[0].quantity).toStrictEqual(9);
+    const updatedProduct = await Product.findById(productId);
+    expect(updatedProduct.colors[0].quantity).toStrictEqual(9);
   });
 
   it('Should throw when product name already exists', async () => {
@@ -68,35 +70,36 @@ describe('Product model test', () => {
 
   describe('Reviews', () => {
     it('Should add a review', async () => {
-      const product = await Product.addProduct(fakeProduct1);
+      const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-      await Product.addReview(product._id, fakeReview);
+      await Product.addReview(productId, fakeReview);
 
-      const updatedProduct = await Product.findById(product._id);
+      const updatedProduct = await Product.findById(productId);
       expect(updatedProduct.reviews.length).toStrictEqual(1);
     });
 
     it('Should throw when missing body field', async () => {
-      const product = await Product.addProduct(fakeProduct1);
-      await expect(Product.addReview(product._id,
+      const { _id: productId } = await Product.addProduct(fakeProduct1);
+
+      await expect(Product.addReview(productId,
         { name: 'Rick Grimez', rating: 4 }))
         .rejects
         .toThrowError();
     });
 
     it('Should throw when missing rating field', async () => {
-      const product = await Product.addProduct(fakeProduct1);
+      const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-      await expect(Product.addReview(product._id,
+      await expect(Product.addReview(productId,
         { name: 'Rick Grimez', body: 'Amazing' }))
         .rejects
         .toThrowError();
     });
 
     it('Should throw when missing name field', async () => {
-      const product = await Product.addProduct(fakeProduct1);
+      const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-      await expect(Product.addReview(product._id,
+      await expect(Product.addReview(productId,
         { rating: 4, body: 'Amazing' }))
         .rejects
         .toThrowError();
