@@ -1,33 +1,15 @@
 const mongoose = require('mongoose');
-const reviewSchema = require('./Review');
 
 const productSchema = new mongoose.Schema({
   name: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
+    type: String, required: true, trim: true, unique: true,
   },
-  image: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  onSale: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    required: true,
-  },
+  image: { type: String, required: true },
+  price: { type: Number, required: true },
+  onSale: { type: Number, required: true },
+  description: { type: String, required: true },
+  type: { type: String, required: true },
+  gender: { type: String, required: true, validate: /Female|Male/ },
   colors: [{
     _id: false,
     color: {
@@ -40,29 +22,34 @@ const productSchema = new mongoose.Schema({
     },
   }],
   sizes: [{ type: String }],
-  reviews: [reviewSchema],
-  rating: {
-    type: Number,
-    default: 0,
-  },
+  reviews: [{
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    body: { type: String, required: true, minlength: 4 },
+    timestamp: { type: Date, default: Date.now() },
+  }],
+  rating: { type: Number, default: 0 },
 });
 
 productSchema.index({ type: 1 });
 
 productSchema.statics.findAll = function () {
-  return new Promise(resolve => resolve(this.find()));
+  return this.find();
+};
+
+productSchema.statics.searchProducts = function (productNameRegex) {
+  return this.find({ name: productNameRegex });
 };
 
 productSchema.statics.addProduct = function (product) {
-  return new Promise(resolve => resolve(new this({ ...product })
-    .save()));
+  return new this({ ...product }).save();
 };
 
 productSchema.statics.updateQuantity = function (productId, color, quantity) {
-  return new Promise(resolve => resolve(this.updateOne(
+  return this.updateOne(
     { _id: productId, 'colors.color': color },
     { $inc: { 'colors.$.quantity': quantity } },
-  )));
+  );
 };
 
 productSchema.methods.calculateRating = function () {
@@ -75,14 +62,14 @@ productSchema.statics.addReview = async function (_id, review) {
   doc.reviews.unshift(review);
   doc.calculateRating();
 
-  return new Promise(resolve => resolve(doc.save()));
+  return doc.save();
 };
 
 productSchema.statics.deleteReview = function (reviewId) {
-  return new Promise(resolve => resolve(this.updateOne(
+  return this.updateOne(
     { 'reviews._id': reviewId },
     { $pull: { reviews: { reviewId } } },
-  )));
+  );
 };
 
 const Product = mongoose.model('products', productSchema);

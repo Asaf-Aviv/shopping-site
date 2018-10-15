@@ -1,5 +1,6 @@
 module.exports = {
   extends: 'airbnb',
+  parser: 'babel-eslint',
   env: {
     'node': true,
     'jest': true,
@@ -10,8 +11,11 @@ module.exports = {
     'no-console': 0,
     'no-param-reassign': [2, { 'props': false }],
     'no-underscore-dangle': 0,
-    'no-unused-vars': ["error", { "argsIgnorePattern": "next" }],
+    'no-unused-vars': ['error', { 'argsIgnorePattern': 'next' }],
+    "no-unused-expressions": ["error", {"allowTernary": true}],
     'react/jsx-filename-extension': 0,
-    'import/no-extraneous-dependencies': 0
+    'import/no-extraneous-dependencies': 0,
+    'import/no-dynamic-require': 0,
+    'global-require': 0,
   },
 };

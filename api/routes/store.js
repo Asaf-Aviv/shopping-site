@@ -3,15 +3,17 @@ const ProductController = require('../controllers/product');
 
 router.get('/products', ProductController.getAllProducts);
 
-router.get('/products/:productId', ProductController.getProductById);
+router.get('/product/:productId', ProductController.getProductById);
 
-router.post('/products', ProductController.addProduct);
+router.get('/products/search', ProductController.searchProducts);
 
-router.post('/products/quantity', ProductController.updateProductQuantity);
+router.post('/product', ProductController.addProduct);
 
-router.post('/products/reviews', ProductController.addReview);
+router.post('/product/quantity', ProductController.updateProductQuantity);
 
-router.delete('/products/reviews', ProductController.deleteReview);
+router.post('/product/reviews', ProductController.addReview);
+
+router.delete('/product/reviews', ProductController.deleteReview);
 
 router.use((err, req, res, next) => res.status(500).send(err));
 

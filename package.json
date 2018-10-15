@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon server.js",
     "client": "cd client && npm start",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "dev": "concurrently --kill-others-on-fail \"npm:server\" \"npm:client\"",
     "test": "jest --forceExit",
     "watch": "jest --watch"
   },
@@ -27,6 +27,8 @@
     "mongoose": "^5.3.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "concurrently": "^4.0.1",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
