@@ -1,9 +1,30 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
+import Store from '../Store/Store';
+import Product from '../../containers/Product/Product';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 import './App.sass';
 
-export default () => (
-  <div>
-    Welcome to my App ! :D
-  </div>
+const App = () => (
+  <Router>
+    <>
+      <NavBar />
+      <Switch>
+        <Redirect exact from="/" to="/store" />
+        <Route exact path="/store" component={Store} />
+        <Route path="/cart" component={() => <h1>Cart</h1>} />
+        <Route path="/store/product/:productId" component={Product} />
+        <Route component={PageNotFound} />
+      </Switch>
+    </>
+  </Router>
 );
+
+export default App;

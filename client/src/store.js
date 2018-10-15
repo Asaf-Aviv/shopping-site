@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import rootReducer from './reducers/index';
+import rootReducer from './reducers';
 
 function configureStore(preloadedState) {
   const middlewares = [thunk];
@@ -20,7 +20,7 @@ function configureStore(preloadedState) {
   const store = createStore(rootReducer, preloadedState, composedEnhancers);
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept('./reducers/reducers', () => store.replaceReducer(rootReducer));
+    module.hot.accept('./reducers', () => store.replaceReducer(rootReducer));
   }
 
   return store;
