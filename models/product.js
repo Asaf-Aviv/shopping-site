@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
       required: true,
     },
   }],
-  sizes: [{ type: String }],
+  sizes: [{ type: Number }],
   reviews: [{
     name: { type: String, required: true },
     rating: { type: Number, required: true },

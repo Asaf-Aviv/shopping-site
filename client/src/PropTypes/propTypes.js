@@ -19,5 +19,5 @@ export default PropTypes.shape({
     body: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
   })).isRequired,
-  sizes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
 });
