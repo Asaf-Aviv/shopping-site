@@ -11,12 +11,27 @@ class ProductCard extends Component {
     chooseProduct: PropTypes.func.isRequired,
   }
 
-  handleClick = () => {
+  state = {
+    chosenSize: 0,
+    chosenColor: {},
+  }
+
+  chooseProductHandler = () => {
     const { product, chooseProduct } = this.props;
     chooseProduct(product);
   }
 
+  chooseSizeHandler = (chosenSize) => {
+    this.setState({ chosenSize });
+  }
+
+  chooseColorHandler = (chosenColor) => {
+    console.log('setting color');
+    this.setState({ chosenColor });
+  }
+
   render() {
+    const { chosenSize, chosenColor } = this.state;
     const { product } = this.props;
     const {
       _id, name, colors, description, image, type,
@@ -26,22 +41,26 @@ class ProductCard extends Component {
     return (
       <div>
         <div>
-          <Link to={`/store/product/${_id}`} onClick={this.handleClick}>{name}</Link>
+          <Link to={`/store/product/${_id}`} onClick={this.chooseProductHandler}>{name}</Link>
           <img
-            style={{
-              height: 200,
-            }}
+            style={{ height: 200 }}
             src={require(`../../assets/images/${image}`)}
             alt={type}
           />
           <p>{description}</p>
-          {onSale > 0
-            && <p>{`${onSale}% off`}</p>
-          }
-          <span>{onSale > 0 ? (price - price * (onSale / 100)).toFixed(2) : price}</span>
+          {onSale && <p>{`${onSale}% off`}</p>}
+          <span>{onSale ? (price - price * (onSale / 100)).toFixed(2) : price}</span>
         </div>
-        <ColorPicker colors={colors} />
-        <SizePicker sizes={sizes} />
+        <SizePicker
+          sizes={sizes}
+          chosenSize={chosenSize}
+          chooseSizeHandler={this.chooseSizeHandler}
+        />
+        <ColorPicker
+          colors={colors}
+          chosenColor={chosenColor}
+          chooseColorHandler={this.chooseColorHandler}
+        />
         <h2>{`Rating: ${rating}`}</h2>
         <h3>{`Reviews: ${reviews}`}</h3>
       </div>

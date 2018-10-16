@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import createListItem from '../../util/util';
 
 import './SizesPicker.sass';
 
 class SizePicker extends Component {
   static propTypes = {
     sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+    chooseSizeHandler: PropTypes.func.isRequired,
+    chosenSize: PropTypes.number.isRequired,
   }
 
   state = {
     isOpen: false,
-    chosenSize: null,
   }
 
   openSelect = (e) => {
@@ -19,11 +21,15 @@ class SizePicker extends Component {
     }
   }
 
-  chooseSize = e => this.setState({ isOpen: false, chosenSize: e.target.value });
+  chooseSize = (e) => {
+    const { chooseSizeHandler } = this.props;
+    this.setState({ isOpen: false });
+    chooseSizeHandler(e.target.value);
+  }
 
   render() {
-    const { sizes } = this.props;
-    const { isOpen, chosenSize } = this.state;
+    const { sizes, chosenSize } = this.props;
+    const { isOpen } = this.state;
 
     if (!sizes.length) return null;
 
@@ -39,19 +45,7 @@ class SizePicker extends Component {
           {chosenSize || 'Select'}
         </span>
         <ul className={`size-picker__menu ${isOpen ? 'size-picker__menu--open' : ''}`}>
-          {sizes.map(size => (
-            <li
-              tabIndex="0"
-              role="option"
-              aria-selected={this.chooseSize === size}
-              onClick={this.chooseSize}
-              onKeyDown={this.chooseSize}
-              key={size}
-              value={size}
-            >
-              {size}
-            </li>
-          ))}
+          {sizes.map(size => createListItem(chosenSize === size, size, this.chooseSize))}
         </ul>
       </div>
     );

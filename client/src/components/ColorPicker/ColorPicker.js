@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import createListItem from '../../util/util';
 
 import './ColorPicker.sass';
 
@@ -9,30 +10,38 @@ class ColorPicker extends Component {
       color: PropTypes.string,
       quantity: PropTypes.number,
     })).isRequired,
+    chosenColor: PropTypes.shape({
+      color: PropTypes.string,
+      quantity: PropTypes.number,
+    }).isRequired,
+    chooseColorHandler: PropTypes.func.isRequired,
   }
 
   state = {
     isOpen: false,
-    chosenColor: null,
   }
 
   openSelect = (e) => {
+    console.log('open');
     if (e.keyCode === 13 || !e.keyCode) {
-      this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+      this.setState(prevState => ({
+        ...prevState,
+        isOpen: !prevState.isOpen,
+      }));
     }
   };
 
   chooseColor = (e) => {
-    const { colors } = this.props;
-    this.setState({
-      isOpen: false,
-      chosenColor: colors.find(colorObj => colorObj.color === e.target.value),
-    });
+    const { colors, chooseColorHandler } = this.props;
+    const colorName = e.target.getAttribute('value');
+    const chosenColor = colors.find(colorObj => colorObj.color === colorName);
+    this.setState({ isOpen: false });
+    chooseColorHandler(chosenColor);
   };
 
   render() {
-    const { colors } = this.props;
-    const { isOpen, chosenColor } = this.state;
+    const { colors, chosenColor } = this.props;
+    const { isOpen } = this.state;
 
     if (!colors.length) return null;
 
@@ -45,24 +54,15 @@ class ColorPicker extends Component {
           role="listbox"
           tabIndex="0"
         >
-          {chosenColor ? chosenColor.color : 'Select'}
+          {chosenColor.color || 'Select'}
         </span>
         <ul className={`color-picker__menu ${isOpen ? 'color-picker__menu--open' : ''}`}>
-          {colors.map(colorObj => (
-            <li
-              tabIndex="0"
-              role="option"
-              aria-selected={chosenColor && chosenColor.color === colorObj.color}
-              onClick={this.chooseColor}
-              onKeyDown={this.chooseColor}
-              key={colorObj.color}
-              value={colorObj.color}
-            >
-              {colorObj.color}
-            </li>
-          ))}
+          {colors.map((colorObj) => {
+            const isSelected = chosenColor.color === colorObj.color;
+            return createListItem(isSelected, colorObj.color, this.chooseColor);
+          })}
         </ul>
-        {chosenColor && <p>{`Only ${chosenColor.quantity} left!`}</p>}
+        {chosenColor.quantity && <p>{`Only ${chosenColor.quantity} left!`}</p>}
       </div>
     );
   }
