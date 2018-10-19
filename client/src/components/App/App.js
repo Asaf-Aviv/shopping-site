@@ -8,6 +8,7 @@ import {
 import NavBar from '../NavBar/NavBar';
 import Store from '../Store/Store';
 import Product from '../../containers/Product/Product';
+import Cart from '../../containers/Cart/Cart';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
 import './App.sass';
@@ -19,7 +20,7 @@ const App = () => (
       <Switch>
         <Redirect exact from="/" to="/store" />
         <Route exact path="/store" component={Store} />
-        <Route path="/cart" component={() => <h1>Cart</h1>} />
+        <Route path="/cart" component={Cart} />
         <Route path="/store/product/:productId" component={Product} />
         <Route component={PageNotFound} />
       </Switch>

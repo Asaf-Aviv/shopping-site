@@ -24,10 +24,11 @@ export default (state = initialState, action) => {
         },
       };
     case 'UPDATE_PRODUCTS':
+      console.log(...action.products);
       return {
         ...state,
         products: {
-          items: [...state.products.items, ...action.payload],
+          items: [...state.products.items, ...action.products],
           isFetching: false,
           error: false,
         },
@@ -54,7 +55,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         chosenProduct: {
-          data: { ...action.payload },
+          data: { ...action.product },
           isFetching: false,
           error: false,
         },

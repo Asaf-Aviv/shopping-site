@@ -3,7 +3,7 @@ exports.fakeProduct1 = {
   image: 'hat.jpg',
   price: 9.99,
   gender: 'Male',
-  onSale: 0,
+  discount: 0,
   type: 'Hat',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
   colors: [
@@ -15,7 +15,7 @@ exports.fakeProduct1 = {
 exports.fakeProduct2 = {
   name: 'pants - P1',
   price: 24.99,
-  onSale: 20,
+  discount: 20,
   type: 'Pants',
   gender: 'Female',
   image: 'pants.jpg',
@@ -28,7 +28,7 @@ exports.fakeProduct2 = {
 exports.invalidProduct = {
   image: 'shirt.jpg',
   price: 9.99,
-  onSale: 25,
+  discount: 25,
   type: 'Shirt',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
   colors: [

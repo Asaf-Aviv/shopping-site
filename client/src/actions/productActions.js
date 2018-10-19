@@ -7,7 +7,7 @@ const requestProducts = () => ({
 
 const updateProducts = products => ({
   type: types.UPDATE_PRODUCTS,
-  payload: products,
+  products,
 });
 
 const productsError = () => ({
@@ -30,7 +30,7 @@ const requestProduct = () => ({
 
 export const chooseProduct = product => ({
   type: types.CHOOSE_PRODUCT,
-  payload: product,
+  product,
 });
 
 const productNotFound = () => ({

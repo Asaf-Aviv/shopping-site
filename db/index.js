@@ -9,7 +9,6 @@ module.exports = {
       mongoose.set('debug', true);
     }
 
-    mongoose.Promise = global.Promise;
     mongoose.set('useFindAndModify', false);
 
     mongoose.connection.on('connected', () => {

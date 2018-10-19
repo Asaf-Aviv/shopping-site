@@ -6,7 +6,7 @@ const productSchema = new mongoose.Schema({
   },
   image: { type: String, required: true },
   price: { type: Number, required: true },
-  onSale: { type: Number, required: true },
+  discount: { type: Number, required: true },
   description: { type: String, required: true },
   type: { type: String, required: true },
   gender: { type: String, required: true, validate: /Female|Male/ },
