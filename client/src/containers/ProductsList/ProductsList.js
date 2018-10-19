@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import ProductPropTypes from '../../PropTypes/propTypes';
+import { ProductPropTypes } from '../../PropTypes/propTypes';
 import { fetchProducts, chooseProduct } from '../../actions/productActions';
 
 const mapStateToProps = state => ({
@@ -31,7 +31,9 @@ class Products extends Component {
   }
 
   render() {
-    const { products, isFetching, error } = this.props;
+    const {
+      products, isFetching, error, dispatch,
+    } = this.props;
 
     return (
       <ul>
@@ -40,6 +42,7 @@ class Products extends Component {
         { products.map(product => (
           <li key={product._id}>
             <ProductCard
+              dispatch={dispatch}
               product={product}
               chooseProduct={this.chooseProductHandler}
             />

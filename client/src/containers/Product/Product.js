@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ProductPropTypes from '../../PropTypes/propTypes';
+import ProductImage from '../../components/ProductImage/ProductImage';
+import { ProductPropTypes } from '../../PropTypes/propTypes';
 import { fetchProduct } from '../../actions/productActions';
 
 const mapStateToProps = state => ({
@@ -13,7 +14,7 @@ const mapStateToProps = state => ({
 @connect(mapStateToProps)
 class Product extends Component {
   static propTypes = {
-    product: PropTypes.oneOfType([ProductPropTypes, PropTypes.object]).isRequired,
+    product: ProductPropTypes.isRequired,
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -43,21 +44,15 @@ class Product extends Component {
         { Object.keys(product).length > 0 && (
           <div>
             <div>
-              <img
-                style={{
-                  height: 200,
-                }}
-                src={require(`../../assets/images/${product.image}`)}
-                alt={product.type}
-              />
+              <ProductImage imgName={product.image} alt={product.type} />
               <h1>{product.name}</h1>
               <p>{product.description}</p>
-              {product.onSale > 0
-                && <p>{`${product.onSale}% off`}</p>
+              {product.discount > 0
+                && <p>{`${product.discount}% off`}</p>
             }
               <span>
-                {product.onSale > 0
-                  ? (product.price - product.price * (product.onSale / 100)).toFixed(2)
+                {product.discount > 0
+                  ? (product.price - product.price * (product.discount / 100)).toFixed(2)
                   : product.price}
               </span>
             </div>

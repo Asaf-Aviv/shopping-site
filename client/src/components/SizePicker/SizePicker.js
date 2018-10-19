@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import createListItem from '../../util/util';
+import { createListItem } from '../../utils/utils';
 
 import './SizesPicker.sass';
 

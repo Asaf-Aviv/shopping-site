@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import createListItem from '../../util/util';
+import { createListItem } from '../../utils/utils';
 
 import './ColorPicker.sass';
 
@@ -22,7 +22,6 @@ class ColorPicker extends Component {
   }
 
   openSelect = (e) => {
-    console.log('open');
     if (e.keyCode === 13 || !e.keyCode) {
       this.setState(prevState => ({
         ...prevState,

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-export default PropTypes.shape({
+export const ProductPropTypes = PropTypes.shape({
   _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   gender: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  onSale: PropTypes.number.isRequired,
+  discount: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   colors: PropTypes.arrayOf(PropTypes.shape({
@@ -20,4 +20,13 @@ export default PropTypes.shape({
     rating: PropTypes.number.isRequired,
   })).isRequired,
   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+});
+
+export const CartItemPropTypes = PropTypes.shape({
+  _id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired,
 });

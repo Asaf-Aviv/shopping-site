@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (isSelected, value, funcHandler) => (
+export const createListItem = (isSelected, value, funcHandler) => (
   <li
     tabIndex="0"
     role="option"
@@ -13,3 +13,5 @@ export default (isSelected, value, funcHandler) => (
     {value}
   </li>
 );
+
+export const calculatePrice = (price, salePerc) => +(price - price * (salePerc / 100)).toFixed(2);
