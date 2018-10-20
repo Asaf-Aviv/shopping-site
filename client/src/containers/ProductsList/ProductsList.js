@@ -6,40 +6,41 @@ import { ProductPropTypes } from '../../PropTypes/propTypes';
 import { fetchProducts, chooseProduct } from '../../actions/productActions';
 
 const mapStateToProps = state => ({
-  products: state.store.products.items,
-  isFetching: state.store.products.isFetching,
-  error: state.store.products.error,
+  products: state.store.products,
 });
 
 @connect(mapStateToProps)
 class Products extends Component {
   static propTypes = {
-    products: PropTypes.arrayOf(ProductPropTypes).isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
+    products: PropTypes.shape({
+      productsList: PropTypes.arrayOf(ProductPropTypes).isRequired,
+      isFetching: PropTypes.bool.isRequired,
+      error: PropTypes.bool.isRequired,
+    }).isRequired,
     dispatch: PropTypes.func.isRequired,
-  }
+  };
 
   componentDidMount = () => {
     const { dispatch } = this.props;
     dispatch(fetchProducts());
-  }
+  };
 
   chooseProductHandler = (product) => {
     const { dispatch } = this.props;
     dispatch(chooseProduct(product));
-  }
+  };
 
   render() {
     const {
-      products, isFetching, error, dispatch,
+      dispatch,
+      products: { productsList, isFetching, error },
     } = this.props;
 
     return (
       <ul>
-        { isFetching && <h3>Fetching...</h3> }
-        { error && <h3>Products not found</h3> }
-        { products.map(product => (
+        {isFetching && <h3>Fetching...</h3>}
+        {error && <h3>Products not found</h3>}
+        {productsList.map(product => (
           <li key={product._id}>
             <ProductCard
               dispatch={dispatch}

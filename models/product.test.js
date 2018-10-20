@@ -1,15 +1,15 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const mongoDBConfig = require('../db/db.config.js');
+const mongoDBConfig = require('../db/db.config');
 
-mongoose.connect(process.env.TEST_MONGO_URI, mongoDBConfig);
+mongoose.connect(
+  process.env.TEST_MONGO_URI,
+  mongoDBConfig,
+);
 
 const Product = require('./Product');
 const {
-  fakeProduct1,
-  fakeProduct2,
-  invalidProduct,
-  fakeReview,
+  fakeProduct1, fakeProduct2, invalidProduct, fakeReview,
 } = require('../data/fakeProducts');
 
 describe('Product model test', () => {
@@ -35,20 +35,14 @@ describe('Product model test', () => {
   });
 
   it('Should return all products', async () => {
-    await Promise.all([
-      Product.addProduct(fakeProduct1),
-      Product.addProduct(fakeProduct2),
-    ]);
+    await Promise.all([Product.addProduct(fakeProduct1), Product.addProduct(fakeProduct2)]);
 
     const numOfProducts = (await Product.findAll()).length;
     expect(numOfProducts).toStrictEqual(2);
   });
 
   it('Should return products by regex', async () => {
-    await Promise.all([
-      Product.addProduct(fakeProduct1),
-      Product.addProduct(fakeProduct2),
-    ]);
+    await Promise.all([Product.addProduct(fakeProduct1), Product.addProduct(fakeProduct2)]);
 
     const productRegex = new RegExp('at', 'i');
     const numOfProducts = (await Product.searchProducts(productRegex)).length;
@@ -67,15 +61,11 @@ describe('Product model test', () => {
   it('Should throw when product name already exists', async () => {
     await Product.addProduct(fakeProduct1);
 
-    await expect(Product.addProduct(fakeProduct1))
-      .rejects
-      .toThrow('E11000');
+    await expect(Product.addProduct(fakeProduct1)).rejects.toThrow('E11000');
   });
 
   it('Should throw when providing an invalid schema', async () => {
-    await expect(Product.addProduct(invalidProduct))
-      .rejects
-      .toThrow('products validation failed');
+    await expect(Product.addProduct(invalidProduct)).rejects.toThrow('products validation failed');
   });
 
   describe('Reviews', () => {
@@ -91,28 +81,25 @@ describe('Product model test', () => {
     it('Should throw when missing body field', async () => {
       const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-      await expect(Product.addReview(productId,
-        { name: 'Rick Grimez', rating: 4 }))
-        .rejects
-        .toThrowError();
+      await expect(
+        Product.addReview(productId, { name: 'Rick Grimez', rating: 4 }),
+      ).rejects.toThrowError();
     });
 
     it('Should throw when missing rating field', async () => {
       const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-      await expect(Product.addReview(productId,
-        { name: 'Rick Grimez', body: 'Amazing' }))
-        .rejects
-        .toThrowError();
+      await expect(
+        Product.addReview(productId, { name: 'Rick Grimez', body: 'Amazing' }),
+      ).rejects.toThrowError();
     });
 
     it('Should throw when missing name field', async () => {
       const { _id: productId } = await Product.addProduct(fakeProduct1);
 
-      await expect(Product.addReview(productId,
-        { rating: 4, body: 'Amazing' }))
-        .rejects
-        .toThrowError();
+      await expect(
+        Product.addReview(productId, { rating: 4, body: 'Amazing' }),
+      ).rejects.toThrowError();
     });
   });
 });

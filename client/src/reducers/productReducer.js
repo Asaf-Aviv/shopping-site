@@ -1,6 +1,6 @@
 const initialState = {
   products: {
-    items: [],
+    productsList: [],
     isFetching: false,
     error: false,
     showingAllProducts: false,
@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         products: {
-          items: [...state.products.items, ...action.products],
+          productsList: [...state.products.productsList, ...action.products],
           isFetching: false,
           error: false,
         },
