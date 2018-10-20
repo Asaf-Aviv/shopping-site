@@ -27,8 +27,11 @@ const addToCart = (product, color, size, quantity) => {
   };
 };
 
-export const addToCartHandler = (product, color, size, quantity) => (dispatch, getStore) => {
-  console.log(getStore());
+export const resetCart = () => ({
+  type: types.RESET_CART,
+});
+
+export const addToCartHandler = (product, color, size, quantity) => (dispatch) => {
   dispatch(addToCart(product, color, size, quantity));
   dispatch(updateCartTotal());
 };

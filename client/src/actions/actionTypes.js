@@ -9,3 +9,8 @@ export const PRODUCT_NOT_FOUND = 'PRODUCT_NOT_FOUND';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const UPDATE_CART_TOTAL = 'UPDATE_CART_TOTAL';
+export const RESET_CART = 'RESET_CART';
+
+export const SEND_ORDER = 'SEND_ORDER';
+export const ORDER_RECEIVED = 'ORDER_RECEIVED';
+export const ORDER_ERROR = 'ORDER_ERROR';

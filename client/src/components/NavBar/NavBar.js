@@ -5,6 +5,7 @@ const NavBar = () => (
   <nav>
     <Link to="/store">Store</Link>
     <Link to="/cart">Cart</Link>
+    <Link to="/orders">Orders</Link>
   </nav>
 );
 

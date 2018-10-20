@@ -42,6 +42,8 @@ export default (state = initialState, action) => {
         totalPrice: +state.products
           .reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2),
       };
+    case 'RESET_CART':
+      return initialState;
     default:
       return state;
   }

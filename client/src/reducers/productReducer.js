@@ -24,7 +24,6 @@ export default (state = initialState, action) => {
         },
       };
     case 'UPDATE_PRODUCTS':
-      console.log(...action.products);
       return {
         ...state,
         products: {

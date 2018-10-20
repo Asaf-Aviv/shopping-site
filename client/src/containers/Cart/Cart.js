@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { orderHandler } from '../../actions/orderActions';
 import { CartItemPropTypes } from '../../PropTypes/propTypes';
 import CartItem from '../../components/CartItem/CartItem';
 
@@ -17,7 +18,12 @@ class Cart extends Component {
       totalPrice: PropTypes.number,
     }).isRequired,
     dispatch: PropTypes.func.isRequired,
-  }
+  };
+
+  submitOrder = () => {
+    const { dispatch, cart: { products } } = this.props;
+    dispatch(orderHandler(products));
+  };
 
   render() {
     const { cart, dispatch } = this.props;
@@ -33,7 +39,7 @@ class Cart extends Component {
 
     return (
       <div>
-        { cart.products.map((product, i) => (
+        {cart.products.map((product, i) => (
           <CartItem
             key={`${product._id}${product.color}${product.size}`}
             productIndex={i}
@@ -42,6 +48,7 @@ class Cart extends Component {
           />
         ))}
         <h1>{cart.totalPrice}</h1>
+        <button type="button" onClick={this.submitOrder}>Submit Order</button>
       </div>
     );
   }
