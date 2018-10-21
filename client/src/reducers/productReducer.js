@@ -4,6 +4,7 @@ const initialState = {
     isFetching: false,
     error: false,
     showingAllProducts: false,
+    page: 0,
   },
   chosenProduct: {
     data: {},
@@ -24,13 +25,13 @@ export default (state = initialState, action) => {
         },
       };
     case 'UPDATE_PRODUCTS':
-      console.log(...action.products);
       return {
         ...state,
         products: {
           productsList: [...state.products.productsList, ...action.products],
           isFetching: false,
           error: false,
+          page: state.products.page + 1,
         },
       };
     case 'REQUEST_PRODUCTS_ERROR':

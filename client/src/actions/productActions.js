@@ -14,10 +14,11 @@ const productsError = () => ({
   type: types.REQUEST_PRODUCTS_ERROR,
 });
 
-export const fetchProducts = () => (dispatch) => {
+export const fetchProducts = () => (dispatch, getState) => {
+  const { page } = getState().store.products;
   dispatch(requestProducts());
 
-  return axios('/api/store/products')
+  return axios(`/api/store/products?page=${page}`)
     .then(
       ({ data: products }) => dispatch(updateProducts(products)),
       () => dispatch(productsError()),

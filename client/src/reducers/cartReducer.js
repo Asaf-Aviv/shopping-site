@@ -1,8 +1,11 @@
 const shouldIncQuantity = (products, newProduct) => {
+  console.log(newProduct);
   const productIndex = products
-    .findIndex(product => product._id === newProduct._id
-      && product.size === newProduct.size
-      && product.color === newProduct.color);
+    .findIndex(({ product, size, color }) => product._id === newProduct.product._id
+      && size === newProduct.size
+      && color === newProduct.color);
+
+  console.log(productIndex);
 
   if (productIndex !== -1) {
     const updatedProduct = {
@@ -40,8 +43,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         totalPrice: +state.products
-          .reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2),
+          .reduce(
+            (total, cartItem) => total + cartItem.product.price * cartItem.quantity, 0,
+          ).toFixed(2),
       };
+    case 'RESET_CART':
+      return initialState;
     default:
       return state;
   }

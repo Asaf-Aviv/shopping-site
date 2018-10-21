@@ -34,10 +34,10 @@ describe('Product model test', () => {
     expect(product.isNew).toStrictEqual(false);
   });
 
-  it('Should return all products', async () => {
+  it('Should return products by page', async () => {
     await Promise.all([Product.addProduct(fakeProduct1), Product.addProduct(fakeProduct2)]);
 
-    const numOfProducts = (await Product.findAll()).length;
+    const numOfProducts = (await Product.fetchProductsByPage()).length;
     expect(numOfProducts).toStrictEqual(2);
   });
 

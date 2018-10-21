@@ -23,10 +23,8 @@ export const ProductPropTypes = PropTypes.shape({
 });
 
 export const CartItemPropTypes = PropTypes.shape({
-  _id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  product: ProductPropTypes.isRequired,
   color: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
   size: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
 });
