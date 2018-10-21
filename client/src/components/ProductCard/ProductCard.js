@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { ProductPropTypes } from '../../PropTypes/propTypes';
 import SizePicker from '../SizePicker/SizePicker';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import QuantityPicker from '../QuantityPicker/QuantityPicker';
 import ProductImage from '../ProductImage/ProductImage';
 import { calculatePrice } from '../../utils/utils';
-import { addToCartHandler } from '../../actions/cartActions';
+import * as cartActions from '../../actions/cartActions';
+import * as productActions from '../../actions/productActions';
 
+@connect(null, { ...cartActions, ...productActions })
 class ProductCard extends Component {
   static propTypes = {
     product: ProductPropTypes.isRequired,
     chooseProduct: PropTypes.func.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    addToCartHandler: PropTypes.func.isRequired,
   }
 
   state = {
@@ -23,9 +26,9 @@ class ProductCard extends Component {
   }
 
   chooseProductHandler = () => {
-    const { product, chooseProduct } = this.props;
+    const { chooseProduct, product } = this.props;
     chooseProduct(product);
-  }
+  };
 
   chooseSizeHandler = (chosenSize) => {
     this.setState({ chosenSize });
@@ -43,10 +46,19 @@ class ProductCard extends Component {
     }));
   }
 
-  addToCartHandler = () => {
-    const { dispatch, product } = this.props;
+  addToCart = () => {
+    const { product, addToCartHandler } = this.props;
     const { chosenColor, chosenSize, chosenQuantity } = this.state;
-    dispatch(addToCartHandler(product, chosenColor.color, chosenSize, chosenQuantity));
+
+    addToCartHandler({
+      product: {
+        ...product,
+        price: calculatePrice(product.price, product.discount),
+      },
+      color: chosenColor.color,
+      size: chosenSize,
+      quantity: chosenQuantity,
+    });
   }
 
   render() {
@@ -86,7 +98,7 @@ class ProductCard extends Component {
         <button
           type="button"
           disabled={!chosenColor.color || (product.sizes.length && !chosenSize)}
-          onClick={this.addToCartHandler}
+          onClick={this.addToCart}
         >
           Add to cart
         </button>

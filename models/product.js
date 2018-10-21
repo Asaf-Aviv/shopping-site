@@ -40,8 +40,8 @@ const productSchema = new mongoose.Schema({
 
 productSchema.index({ type: 1 });
 
-productSchema.statics.findAll = function () {
-  return this.find();
+productSchema.statics.fetchProductsByPage = function (page) {
+  return this.find().skip(page * 6).limit(6);
 };
 
 productSchema.statics.searchProducts = function (productNameRegex) {
