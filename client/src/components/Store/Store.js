@@ -2,9 +2,9 @@ import React from 'react';
 import ProductsList from '../../containers/ProductsList/ProductsList';
 
 const Store = () => (
-  <div className="store">
+  <main className="store">
     <ProductsList />
-  </div>
+  </main>
 );
 
 export default Store;

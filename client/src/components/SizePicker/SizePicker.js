@@ -35,8 +35,8 @@ class SizePicker extends Component {
 
     return (
       <div className="size-picker">
-        <p>{isOpen.toString()}</p>
         <span
+          className="size-picker__chosen"
           onClick={this.openSelect}
           onKeyDown={this.openSelect}
           role="listbox"
@@ -45,7 +45,7 @@ class SizePicker extends Component {
           {chosenSize || 'Select'}
         </span>
         <ul className={`size-picker__menu ${isOpen ? 'size-picker__menu--open' : ''}`}>
-          {sizes.map(size => createListItem(chosenSize === size, size, this.chooseSize))}
+          {sizes.map(size => createListItem(chosenSize === size, size, this.chooseSize, 'size-picker__item'))}
         </ul>
       </div>
     );
