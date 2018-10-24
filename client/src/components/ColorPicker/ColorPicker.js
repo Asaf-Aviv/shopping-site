@@ -46,19 +46,19 @@ class ColorPicker extends Component {
 
     return (
       <div className="color-picker">
-        <p>{isOpen.toString()}</p>
         <span
+          className="color-picker__chosen"
           onClick={this.openSelect}
           onKeyDown={this.openSelect}
           role="listbox"
           tabIndex="0"
         >
-          {chosenColor.color || 'Select'}
+          {chosenColor.color || 'Color'}
         </span>
         <ul className={`color-picker__menu ${isOpen ? 'color-picker__menu--open' : ''}`}>
           {colors.map((colorObj) => {
             const isSelected = chosenColor.color === colorObj.color;
-            return createListItem(isSelected, colorObj.color, this.chooseColor);
+            return createListItem(isSelected, colorObj.color, this.chooseColor, 'color-picker__item');
           })}
         </ul>
         {chosenColor.quantity && <p>{`Only ${chosenColor.quantity} left!`}</p>}

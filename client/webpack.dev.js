@@ -20,8 +20,7 @@ module.exports = merge(common, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash:4].css',
-      chunkFilename: 'css/[id].[contenthash:4].css',
+      filename: 'css/[name].css',
     }),
   ],
 });

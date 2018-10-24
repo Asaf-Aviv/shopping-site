@@ -47,20 +47,21 @@ class Products extends Component {
     const { products: { productsList, isFetching, error } } = this.props;
 
     return (
-      <ul className="products__list">
-        {isFetching && <h3>Fetching...</h3>}
-        {error && <h3>Products not found</h3>}
-        {productsList.map(product => (
-          <li key={product._id}>
+      <>
+        <ul className="products__list">
+          {isFetching && <h3>Fetching...</h3>}
+          {error && <h3>Products not found</h3>}
+          {productsList.map(product => (
             <ProductCard
+              key={product._id}
               product={product}
             />
-          </li>
-        ))}
-        <li className="loading-trigger">
+          ))}
+        </ul>
+        <div className="loading-trigger">
           {isFetching && <LoadingIndicator />}
-        </li>
-      </ul>
+        </div>
+      </>
     );
   }
 }

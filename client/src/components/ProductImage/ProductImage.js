@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './ProductImage.sass';
+
 const ProductImage = ({ imgName, alt }) => (
-  <img
-    style={{ height: 200 }}
-    src={require(`../../assets/images/${imgName}`)}
-    alt={alt}
-  />
+  <figure className="product__figure">
+    <img
+      className="product__img"
+      src={require(`../../assets/images/${imgName}`)}
+      alt={alt}
+    />
+  </figure>
 );
 
 ProductImage.propTypes = {

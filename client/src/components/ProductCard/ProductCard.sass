@@ -1,0 +1,57 @@
+.product
+  padding: 15px
+  text-align: center
+  border: 1px solid #eee
+  border-radius: 8px
+  box-shadow: 0 3px 10px #dedede
+  &__link
+    display: block
+    margin-bottom: 10px
+    color: #2f8f9c
+    font-size: 24px
+    text-decoration: none
+    text-align: center
+  &__description
+    line-height: 1.5
+    margin-bottom: 20px
+    letter-spacing: 0.5px
+  &__price
+    display: inline-block
+    margin: 0 10px 20px 0
+    font-size: 30px
+    font-weight: 700
+    color: #2f8f9c
+  &__discount
+    font-size: 22px
+    font-weight: 700
+    color: #4b22a4
+
+.rating
+  font-size: 30px
+  &__container
+    height: 30px
+    margin-bottom: 20px
+    display: flex
+    align-items: center
+    justify-content: center
+
+.add-to-cart
+  height: 80px
+  &__error
+    height: 30px
+  &__btn
+    margin: 0 auto
+    display: block
+    user-select: none
+    background: #26a8c2
+    border-radius: 8px
+    border: 0
+    padding: 10px 20px
+    color: #FFF
+    box-shadow: 0px 5px 15px #cbcbcb
+    transition: transform 100ms, background 100ms
+    &:hover
+      transform: translateY(-1px)
+      background: #2dc0dd
+    &:focus
+      outline-color: #ff8600

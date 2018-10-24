@@ -6,10 +6,14 @@ import { ProductPropTypes } from '../../PropTypes/propTypes';
 import SizePicker from '../SizePicker/SizePicker';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import QuantityPicker from '../QuantityPicker/QuantityPicker';
+import Reviews from '../Reviews/Reviews';
 import ProductImage from '../ProductImage/ProductImage';
 import { calculatePrice } from '../../utils/utils';
 import * as cartActions from '../../actions/cartActions';
 import * as productActions from '../../actions/productActions';
+import StarIcon from '../../assets/svgs/star.svg';
+
+import './ProductCard.sass';
 
 @connect(null, { ...cartActions, ...productActions })
 class ProductCard extends Component {
@@ -23,6 +27,8 @@ class ProductCard extends Component {
     chosenSize: 0,
     chosenColor: {},
     chosenQuantity: 0,
+    showingReviews: false,
+    addToCarterror: null,
   }
 
   chooseProductHandler = () => {
@@ -50,6 +56,13 @@ class ProductCard extends Component {
     const { product, addToCartHandler } = this.props;
     const { chosenColor, chosenSize, chosenQuantity } = this.state;
 
+    if (!chosenColor.color || !chosenSize || !chosenQuantity) {
+      this.setState({ addToCarterror: 'Please choose color, (size) and quantity' });
+      return;
+    }
+
+    this.setState({ addToCarterror: null });
+
     addToCartHandler({
       product: {
         ...product,
@@ -62,7 +75,9 @@ class ProductCard extends Component {
   }
 
   render() {
-    const { chosenSize, chosenColor, chosenQuantity } = this.state;
+    const {
+      chosenSize, chosenColor, chosenQuantity, showingReviews, addToCarterror,
+    } = this.state;
     const { product } = this.props;
     const {
       _id, name, colors, description, image, type,
@@ -70,39 +85,53 @@ class ProductCard extends Component {
     } = product;
 
     return (
-      <div>
+      <li className="product">
         <div>
-          <Link to={`/store/product/${_id}`} onClick={this.chooseProductHandler}>{name}</Link>
+          <Link
+            to={`/store/product/${_id}`}
+            className="product__link"
+            onClick={this.chooseProductHandler}
+          >
+            {name}
+          </Link>
           <ProductImage imgName={image} alt={type} />
-          <p>{description}</p>
-          {discount > 0 && <p>{`${discount}% off`}</p>}
-          <span>{calculatePrice(price, discount)}</span>
+          <p className="product__description">{description}</p>
+          <span className="product__price">{`${calculatePrice(price, discount)}$`}</span>
+          {discount > 0 && <span className="product__discount">{`${discount}% off`}</span>}
         </div>
-        <SizePicker
-          sizes={sizes}
-          chosenSize={chosenSize}
-          chooseSizeHandler={this.chooseSizeHandler}
-        />
-        <ColorPicker
-          colors={colors}
-          chosenColor={chosenColor}
-          chooseColorHandler={this.chooseColorHandler}
-        />
+        <div className="pickers">
+          <SizePicker
+            sizes={sizes}
+            chosenSize={chosenSize}
+            chooseSizeHandler={this.chooseSizeHandler}
+          />
+          <ColorPicker
+            colors={colors}
+            chosenColor={chosenColor}
+            chooseColorHandler={this.chooseColorHandler}
+          />
+        </div>
         <QuantityPicker
           maxQuantity={chosenColor.quantity || 0}
           chosenQuantity={chosenQuantity}
           chooseQuantityHandler={this.chooseQuantityHandler}
         />
-        <h2>{`Rating: ${rating}`}</h2>
-        <h3>{`Reviews: ${reviews}`}</h3>
-        <button
-          type="button"
-          disabled={!chosenColor.color || (product.sizes.length && !chosenSize)}
-          onClick={this.addToCart}
-        >
-          Add to cart
-        </button>
-      </div>
+        <div className="rating__container">
+          <StarIcon style={{ height: '100%', marginRight: 5 }} />
+          <span className="rating">{rating}</span>
+        </div>
+        <Reviews reviews={reviews} isOpen={showingReviews}>See Reviews</Reviews>
+        <div className="add-to-cart">
+          <p className="add-to-cart__error">{addToCarterror}</p>
+          <button
+            type="button"
+            className="add-to-cart__btn"
+            onClick={this.addToCart}
+          >
+            Add to cart
+          </button>
+        </div>
+      </li>
     );
   }
 }

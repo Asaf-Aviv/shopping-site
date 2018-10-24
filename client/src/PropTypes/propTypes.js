@@ -28,3 +28,10 @@ export const CartItemPropTypes = PropTypes.shape({
   size: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
 });
+
+export const ReviewPropTypes = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  timestamp: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+});

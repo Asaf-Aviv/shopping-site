@@ -11,6 +11,7 @@ import Product from '../../containers/Product/Product';
 import Cart from '../../containers/Cart/Cart';
 import Orders from '../../containers/Orders/Orders';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import Container from '../Container/Container';
 
 import './App.sass';
 
@@ -18,14 +19,16 @@ const App = () => (
   <Router>
     <>
       <NavBar />
-      <Switch>
-        <Redirect exact from="/" to="/store" />
-        <Route exact path="/store" component={Store} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/orders" component={Orders} />
-        <Route path="/store/product/:productId" component={Product} />
-        <Route component={PageNotFound} />
-      </Switch>
+      <Container>
+        <Switch>
+          <Redirect exact from="/" to="/store" />
+          <Route exact path="/store" component={Store} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/orders" component={Orders} />
+          <Route path="/store/product/:productId" component={Product} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </Container>
     </>
   </Router>
 );

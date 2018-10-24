@@ -1,7 +1,8 @@
 import React from 'react';
 
-export const createListItem = (isSelected, value, funcHandler) => (
+export const createListItem = (isSelected, value, funcHandler, classes) => (
   <li
+    className={classes}
     tabIndex="0"
     role="option"
     aria-selected={isSelected}

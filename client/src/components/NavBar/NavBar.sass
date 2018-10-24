@@ -1,0 +1,39 @@
+.nav
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  display: flex
+  align-items: center
+  height: 60px
+  box-shadow: 0 2px 5px #dedede
+  background: #FFF
+  z-index: 100
+  &__menu
+    display: flex
+  &__link
+    position: relative
+    user-select: none
+    padding: 10px 0
+    font-size: 18px
+    text-decoration: none
+    font-weight: 700
+    color: #cecece
+    letter-spacing: 1px
+    &:hover
+      color: #353434
+    &--active
+      color: #353434
+    &:nth-child(2)
+      margin-left: auto
+      margin-right: 30px
+
+.cart__length
+  position: absolute
+  top: 0
+  right: -17px
+  border-radius: 50%
+  background: #2dc0dd
+  font-size: 14px
+  padding: 1px 3px
+  color: #FFF

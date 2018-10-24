@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './QuantityPicker.sass';
+
 class QuantityPicker extends Component {
   static propTypes = {
     chosenQuantity: PropTypes.number.isRequired,
@@ -18,11 +20,28 @@ class QuantityPicker extends Component {
     const { chosenQuantity, maxQuantity } = this.props;
 
     return (
-      <div className="quantity-picker">
-        <button type="button" onClick={this.handleQuantity} disabled={!chosenQuantity}>-</button>
-        <span>{chosenQuantity}</span>
-        <button type="button" onClick={this.handleQuantity} disabled={chosenQuantity >= maxQuantity}>+</button>
-      </div>
+      <>
+        <p style={{ marginBottom: 10 }}>Quantity</p>
+        <div className="quantity-picker">
+          <button
+            className="quantity-picker__btn quantity-picker__btn--negative"
+            type="button"
+            onClick={this.handleQuantity}
+            disabled={!chosenQuantity}
+          >
+          -
+          </button>
+          <span className="quantity-picker__chosen">{chosenQuantity}</span>
+          <button
+            className="quantity-picker__btn quantity-picker__btn--positive"
+            type="button"
+            onClick={this.handleQuantity}
+            disabled={chosenQuantity >= maxQuantity}
+          >
+          +
+          </button>
+        </div>
+    </>
     );
   }
 }
