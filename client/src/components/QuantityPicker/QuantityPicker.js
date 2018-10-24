@@ -20,25 +20,28 @@ class QuantityPicker extends Component {
     const { chosenQuantity, maxQuantity } = this.props;
 
     return (
-      <div className="quantity-picker">
-        <button
-          className="quantity-picker__btn"
-          type="button"
-          onClick={this.handleQuantity}
-          disabled={!chosenQuantity}
-        >
+      <>
+        <p style={{ marginBottom: 10 }}>Quantity</p>
+        <div className="quantity-picker">
+          <button
+            className="quantity-picker__btn quantity-picker__btn--negative"
+            type="button"
+            onClick={this.handleQuantity}
+            disabled={!chosenQuantity}
+          >
           -
-        </button>
-        <span className="quantity-picker__chosen">{chosenQuantity}</span>
-        <button
-          className="quantity-picker__btn"
-          type="button"
-          onClick={this.handleQuantity}
-          disabled={chosenQuantity >= maxQuantity}
-        >
+          </button>
+          <span className="quantity-picker__chosen">{chosenQuantity}</span>
+          <button
+            className="quantity-picker__btn quantity-picker__btn--positive"
+            type="button"
+            onClick={this.handleQuantity}
+            disabled={chosenQuantity >= maxQuantity}
+          >
           +
-        </button>
-      </div>
+          </button>
+        </div>
+    </>
     );
   }
 }

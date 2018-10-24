@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Container from '../Container/Container';
 
 import './NavBar.sass';
 
-const NavBar = () => (
+const NavBar = ({ numOfCartItems }) => (
   <nav className="nav">
     <Container>
       <div className="nav__menu">
@@ -21,6 +23,7 @@ const NavBar = () => (
           activeClassName="nav__link--active"
         >
           Cart
+          {numOfCartItems > 0 && <span className="cart__length">{numOfCartItems}</span>}
         </NavLink>
         <NavLink
           to="/orders"
@@ -34,4 +37,12 @@ const NavBar = () => (
   </nav>
 );
 
-export default NavBar;
+NavBar.propTypes = {
+  numOfCartItems: PropTypes.number.isRequired,
+};
+
+const mapStateToProps = state => ({
+  numOfCartItems: state.cart.products.length,
+});
+
+export default connect(mapStateToProps)(NavBar);

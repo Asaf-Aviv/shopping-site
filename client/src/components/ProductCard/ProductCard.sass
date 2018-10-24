@@ -34,3 +34,24 @@
     display: flex
     align-items: center
     justify-content: center
+
+.add-to-cart
+  height: 80px
+  &__error
+    height: 30px
+  &__btn
+    margin: 0 auto
+    display: block
+    user-select: none
+    background: #26a8c2
+    border-radius: 8px
+    border: 0
+    padding: 10px 20px
+    color: #FFF
+    box-shadow: 0px 5px 15px #cbcbcb
+    transition: transform 100ms, background 100ms
+    &:hover
+      transform: translateY(-1px)
+      background: #2dc0dd
+    &:focus
+      outline-color: #ff8600

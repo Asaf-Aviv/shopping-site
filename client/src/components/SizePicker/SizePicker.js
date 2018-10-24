@@ -42,7 +42,7 @@ class SizePicker extends Component {
           role="listbox"
           tabIndex="0"
         >
-          {chosenSize || 'Select'}
+          {chosenSize || 'Size'}
         </span>
         <ul className={`size-picker__menu ${isOpen ? 'size-picker__menu--open' : ''}`}>
           {sizes.map(size => createListItem(chosenSize === size, size, this.chooseSize, 'size-picker__item'))}

@@ -53,7 +53,7 @@ class ColorPicker extends Component {
           role="listbox"
           tabIndex="0"
         >
-          {chosenColor.color || 'Select'}
+          {chosenColor.color || 'Color'}
         </span>
         <ul className={`color-picker__menu ${isOpen ? 'color-picker__menu--open' : ''}`}>
           {colors.map((colorObj) => {

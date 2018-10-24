@@ -28,6 +28,7 @@ class ProductCard extends Component {
     chosenColor: {},
     chosenQuantity: 0,
     showingReviews: false,
+    addToCarterror: null,
   }
 
   chooseProductHandler = () => {
@@ -55,6 +56,13 @@ class ProductCard extends Component {
     const { product, addToCartHandler } = this.props;
     const { chosenColor, chosenSize, chosenQuantity } = this.state;
 
+    if (!chosenColor.color || !chosenSize || !chosenQuantity) {
+      this.setState({ addToCarterror: 'Please choose color, (size) and quantity' });
+      return;
+    }
+
+    this.setState({ addToCarterror: null });
+
     addToCartHandler({
       product: {
         ...product,
@@ -68,7 +76,7 @@ class ProductCard extends Component {
 
   render() {
     const {
-      chosenSize, chosenColor, chosenQuantity, showingReviews,
+      chosenSize, chosenColor, chosenQuantity, showingReviews, addToCarterror,
     } = this.state;
     const { product } = this.props;
     const {
@@ -113,14 +121,16 @@ class ProductCard extends Component {
           <span className="rating">{rating}</span>
         </div>
         <Reviews reviews={reviews} isOpen={showingReviews}>See Reviews</Reviews>
-        <button
-          type="button"
-          className="add-to-cart"
-          disabled={!chosenColor.color || (product.sizes.length && !chosenSize)}
-          onClick={this.addToCart}
-        >
-          Add to cart
-        </button>
+        <div className="add-to-cart">
+          <p className="add-to-cart__error">{addToCarterror}</p>
+          <button
+            type="button"
+            className="add-to-cart__btn"
+            onClick={this.addToCart}
+          >
+            Add to cart
+          </button>
+        </div>
       </li>
     );
   }
