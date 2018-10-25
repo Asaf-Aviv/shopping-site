@@ -28,7 +28,7 @@ class Reviews extends Component {
 
   render() {
     const { reviews, productId } = this.props;
-    const { isOpen, showReviewForm } = this.state;
+    const { isOpen } = this.state;
     return (
       <>
         <button
