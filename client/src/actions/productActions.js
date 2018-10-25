@@ -15,7 +15,7 @@ const productsError = () => ({
 });
 
 export const fetchProducts = () => (dispatch, getState) => {
-  const { page } = getState().store.products;
+  const { store: { products: { page } } } = getState();
   dispatch(requestProducts());
 
   return axios(`/api/store/products?page=${page}`)
@@ -47,3 +47,8 @@ export const fetchProduct = productId => (dispatch) => {
       () => dispatch(productNotFound()),
     );
 };
+
+export const modifyProduct = updatedProduct => ({
+  type: types.MODIFY_PRODUCT,
+  updatedProduct,
+});

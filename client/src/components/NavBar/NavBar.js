@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import Container from '../Container/Container';
 
 import './NavBar.sass';
@@ -45,4 +46,4 @@ const mapStateToProps = state => ({
   numOfCartItems: state.cart.products.length,
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps)(NavBar));

@@ -9,7 +9,7 @@ const Review = ({ review }) => (
   <li>
     <div className="review">
       <div className="review__info">
-        <h2 className="review__name">{review.name}</h2>
+        <h3 className="review__name">{review.name}</h3>
         <div className="review__rating">
           <StarIcon style={{ height: '100%', marginRight: 5 }} />
           <span>{review.rating}</span>

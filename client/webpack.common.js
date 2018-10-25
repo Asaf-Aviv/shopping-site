@@ -11,6 +11,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
+  resolve: {
+    modules: [
+      'node_modules',
+    ],
+  },
   module: {
     rules: [
       {

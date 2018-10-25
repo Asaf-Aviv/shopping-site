@@ -64,6 +64,7 @@ exports.updateProductQuantity = async (req, res, next) => {
 exports.addReview = async (req, res, next) => {
   try {
     const { productId, review } = req.body;
+    console.log(productId, review);
     const result = await Product.addReview(productId, review);
     res.send(result);
   } catch (error) {

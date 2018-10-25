@@ -18,8 +18,8 @@ import './App.sass';
 const App = () => (
   <Router>
     <>
-      <NavBar />
       <Container>
+        <NavBar />
         <Switch>
           <Redirect exact from="/" to="/store" />
           <Route exact path="/store" component={Store} />

@@ -78,7 +78,9 @@ class ProductCard extends Component {
     const {
       chosenSize, chosenColor, chosenQuantity, showingReviews, addToCarterror,
     } = this.state;
+
     const { product } = this.props;
+
     const {
       _id, name, colors, description, image, type,
       discount, price, rating, reviews, sizes,
@@ -120,9 +122,13 @@ class ProductCard extends Component {
           <StarIcon style={{ height: '100%', marginRight: 5 }} />
           <span className="rating">{rating}</span>
         </div>
-        <Reviews reviews={reviews} isOpen={showingReviews}>See Reviews</Reviews>
         <div className="add-to-cart">
           <p className="add-to-cart__error">{addToCarterror}</p>
+          <Reviews
+            reviews={reviews}
+            isOpen={showingReviews}
+            productId={_id}
+          />
           <button
             type="button"
             className="add-to-cart__btn"
