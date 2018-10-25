@@ -13,6 +13,17 @@ const initialState = {
   },
 };
 
+const replaceProduct = (products, updatedProduct) => {
+  const productIndex = products.findIndex(product => product._id === updatedProduct._id);
+  if (productIndex === -1) return products;
+
+  return [
+    ...products.slice(0, productIndex),
+    updatedProduct,
+    ...products.slice(productIndex + 1),
+  ];
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'REQUEST_PRODUCTS':
@@ -68,6 +79,14 @@ export default (state = initialState, action) => {
           data: {},
           isFetching: false,
           error: true,
+        },
+      };
+    case 'MODIFY_PRODUCT':
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          productsList: replaceProduct(state.products.productsList, action.updatedProduct),
         },
       };
     default:
