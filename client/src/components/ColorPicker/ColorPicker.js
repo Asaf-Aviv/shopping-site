@@ -18,10 +18,10 @@ class ColorPicker extends Component {
   }
 
   state = {
-    isOpen: false,
+    isOpen: true,
   }
 
-  openSelect = (e) => {
+  toggleSelect = (e) => {
     if (e.keyCode === 13 || !e.keyCode) {
       this.setState(prevState => ({
         ...prevState,
@@ -48,8 +48,9 @@ class ColorPicker extends Component {
       <div className="color-picker">
         <span
           className="color-picker__chosen"
-          onClick={this.openSelect}
-          onKeyDown={this.openSelect}
+          onClick={this.toggleSelect}
+          onKeyDown={this.toggleSelect}
+          onBlur={this.hideSelect}
           role="listbox"
           tabIndex="0"
         >

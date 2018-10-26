@@ -5,6 +5,7 @@ const initialState = {
     error: false,
     showingAllProducts: false,
     page: 0,
+    isLastPage: false,
   },
   chosenProduct: {
     data: {},
@@ -43,6 +44,7 @@ export default (state = initialState, action) => {
           isFetching: false,
           error: false,
           page: state.products.page + 1,
+          isLastPage: action.products.length < 6,
         },
       };
     case 'REQUEST_PRODUCTS_ERROR':

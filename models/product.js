@@ -32,7 +32,7 @@ const productSchema = new mongoose.Schema({
       name: { type: String, required: true },
       body: { type: String, required: true, minlength: 4 },
       rating: { type: Number, required: true },
-      timestamp: { type: Date, default: Date.now() },
+      timestamp: { type: Number, default: +new Date() },
     },
   ],
   rating: { type: Number, default: 0 },

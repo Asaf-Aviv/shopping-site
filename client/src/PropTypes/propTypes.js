@@ -32,6 +32,6 @@ export const CartItemPropTypes = PropTypes.shape({
 export const ReviewPropTypes = PropTypes.shape({
   name: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
+  timestamp: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
 });

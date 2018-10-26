@@ -45,8 +45,8 @@ class ReviewForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { name, body, sending } = this.state;
+
     return (
       <div className="add-review">
         {sending && <Loader />}

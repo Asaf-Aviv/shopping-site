@@ -7,7 +7,7 @@ import Container from '../Container/Container';
 
 import './NavBar.sass';
 
-const NavBar = ({ numOfCartItems }) => (
+const NavBar = ({ numOfCartItems, numOfOrders }) => (
   <nav className="nav">
     <Container>
       <div className="nav__menu">
@@ -24,7 +24,7 @@ const NavBar = ({ numOfCartItems }) => (
           activeClassName="nav__link--active"
         >
           Cart
-          {numOfCartItems > 0 && <span className="cart__length">{numOfCartItems}</span>}
+          {numOfCartItems > 0 && <span className="nav__badge">{numOfCartItems}</span>}
         </NavLink>
         <NavLink
           to="/orders"
@@ -32,6 +32,7 @@ const NavBar = ({ numOfCartItems }) => (
           activeClassName="nav__link--active"
         >
           Orders
+          {numOfOrders > 0 && <span className="nav__badge">{numOfOrders}</span>}
         </NavLink>
       </div>
     </Container>
@@ -40,10 +41,12 @@ const NavBar = ({ numOfCartItems }) => (
 
 NavBar.propTypes = {
   numOfCartItems: PropTypes.number.isRequired,
+  numOfOrders: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
   numOfCartItems: state.cart.products.length,
+  numOfOrders: state.orders.length,
 });
 
 export default withRouter(connect(mapStateToProps)(NavBar));

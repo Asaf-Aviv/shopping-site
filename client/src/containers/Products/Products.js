@@ -6,7 +6,7 @@ import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator
 import { ProductPropTypes } from '../../PropTypes/propTypes';
 import * as actions from '../../actions/productActions';
 
-import './productsList.sass';
+import './Products.sass';
 
 const mapStateToProps = state => ({
   products: state.store.products,
@@ -19,21 +19,26 @@ class Products extends Component {
       productsList: PropTypes.arrayOf(ProductPropTypes).isRequired,
       isFetching: PropTypes.bool.isRequired,
       error: PropTypes.bool.isRequired,
+      page: PropTypes.number.isRequired,
+      isLastPage: PropTypes.bool.isRequired,
     }).isRequired,
     fetchProducts: PropTypes.func.isRequired,
   };
 
   componentDidMount = () => {
-    const { fetchProducts, products: { isFetching } } = this.props;
+    const { fetchProducts } = this.props;
 
     const infiniteScrollObserver = new IntersectionObserver((entries) => {
+      const { products: { isFetching, isLastPage } } = this.props;
+
+      if (isLastPage) return;
+
       if (entries[0].intersectionRatio > 0 && !isFetching) {
         fetchProducts();
       }
-    });
+    }, { threshold: 0.5 });
 
     const loadingTrigger = document.querySelector('.loading-trigger');
-
     infiniteScrollObserver.observe(loadingTrigger);
     window.infiniteScrollObserver = infiniteScrollObserver;
   };
