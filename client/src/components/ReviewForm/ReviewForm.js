@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import axios from 'axios';
-import Loader from '../Loader/Loader';
-import * as actions from '../../actions/productActions';
+import LoadingIndicator from '../LoadingIndicator';
 
 import './ReviewForm.sass';
 
@@ -17,7 +15,7 @@ class ReviewForm extends Component {
     name: '',
     body: '',
     rating: 0,
-    sending: false,
+    processing: false,
   }
 
   handleSubmit = (e) => {
@@ -45,11 +43,11 @@ class ReviewForm extends Component {
   }
 
   render() {
-    const { name, body, sending } = this.state;
+    const { name, body, processing } = this.state;
 
     return (
       <div className="add-review">
-        {sending && <Loader />}
+        {processing && <LoadingIndicator />}
         <h3 className="add-review__title">Add a Review</h3>
         <form onSubmit={this.handleSubmit} className="add-review__form">
           <input
@@ -76,4 +74,4 @@ class ReviewForm extends Component {
   }
 }
 
-export default connect(null, actions)(ReviewForm);
+export default ReviewForm;

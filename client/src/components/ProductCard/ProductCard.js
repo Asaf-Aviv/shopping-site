@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { ProductPropTypes } from '../../PropTypes/propTypes';
-import SizePicker from '../SizePicker/SizePicker';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import QuantityPicker from '../QuantityPicker/QuantityPicker';
-import Reviews from '../Reviews/Reviews';
-import ProductImage from '../ProductImage/ProductImage';
-import { calculatePrice } from '../../utils/utils';
-import * as cartActions from '../../actions/cartActions';
-import * as productActions from '../../actions/productActions';
+import SizePicker from '../SizePicker';
+import ColorPicker from '../ColorPicker';
+import QuantityPicker from '../QuantityPicker';
+import Reviews from '../Reviews';
+import ProductImage from '../ProductImage';
+import { calculatePrice } from '../../utils';
+
 import StarIcon from '../../assets/svgs/star.svg';
 
 import './ProductCard.sass';
 
-@connect(null, { ...cartActions, ...productActions })
 class ProductCard extends Component {
   static propTypes = {
     product: ProductPropTypes.isRequired,

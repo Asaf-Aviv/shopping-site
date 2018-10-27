@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import LoadingIndicator from '../../components/LoadingIndicator/LoadingIndicator';
+import ProductCard from '../../components/ProductCard';
+import LoadingIndicator from '../../components/LoadingIndicator';
 import { ProductPropTypes } from '../../PropTypes/propTypes';
-import * as actions from '../../actions/productActions';
 
 import './Products.sass';
 
-const mapStateToProps = state => ({
-  products: state.store.products,
-});
-
-@connect(mapStateToProps, actions)
 class Products extends Component {
   static propTypes = {
     products: PropTypes.shape({

@@ -1,5 +1,5 @@
 import React from 'react';
-import Products from '../../containers/Products/Products';
+import Products from '../../containers/Products';
 
 const Store = () => (
   <main className="store">
