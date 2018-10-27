@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ProductImage from '../../components/ProductImage/ProductImage';
+import ProductImage from '../../components/ProductImage';
 import { ProductPropTypes } from '../../PropTypes/propTypes';
-import { fetchProduct } from '../../actions/productActions';
 
-const mapStateToProps = state => ({
-  product: state.store.chosenProduct.data,
-  isFetching: state.store.chosenProduct.isFetching,
-  error: state.store.chosenProduct.error,
-});
-
-@connect(mapStateToProps)
 class Product extends Component {
   static propTypes = {
     product: ProductPropTypes.isRequired,
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    fetchProduct: PropTypes.func.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         productId: PropTypes.string,
@@ -26,11 +17,11 @@ class Product extends Component {
   }
 
   componentDidMount = async () => {
-    const { product, dispatch } = this.props;
+    const { product, fetchProduct } = this.props;
 
     if (!Object.keys(product).length) {
       const { match: { params: { productId } } } = this.props;
-      dispatch(fetchProduct(productId));
+      fetchProduct(productId);
     }
   }
 

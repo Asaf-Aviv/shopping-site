@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ReviewPropTypes } from '../../PropTypes/propTypes';
-import ReviewForm from '../ReviewForm/ReviewForm';
-import Review from '../Review/Review';
+import ReviewForm from '../ReviewForm';
+import Review from '../Review';
 
 import './Reviews.sass';
 

@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
-import { saveStateToStorage, loadStateFromStorage } from './utils/utils';
+import { saveStateToStorage, loadStateFromStorage } from './utils';
 
 function configureStore() {
   const middlewares = [thunk];

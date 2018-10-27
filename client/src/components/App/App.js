@@ -5,16 +5,16 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
-import Product from '../../containers/Product/Product';
-import PageNotFound from '../PageNotFound/PageNotFound';
-import Container from '../Container/Container';
+import NavBar from '../NavBar';
+import Product from '../../containers/Product';
+import PageNotFound from '../PageNotFound';
+import Container from '../Container';
 
 import './App.sass';
 
-const Store = lazy(() => import('../Store/Store'));
-const Cart = lazy(() => import('../../containers/Cart/Cart'));
-const Orders = lazy(() => import('../../containers/Orders/Orders'));
+const Store = lazy(() => import('../Store'));
+const Cart = lazy(() => import('../../containers/Cart'));
+const Orders = lazy(() => import('../../containers/Orders'));
 
 const App = () => (
   <Router>

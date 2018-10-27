@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
-import Container from '../Container/Container';
+import Container from '../Container';
 
 import './NavBar.sass';
 
@@ -44,9 +42,4 @@ NavBar.propTypes = {
   numOfOrders: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = state => ({
-  numOfCartItems: state.cart.products.length,
-  numOfOrders: state.orders.length,
-});
-
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default NavBar;

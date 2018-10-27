@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CartItemPropTypes } from '../../PropTypes/propTypes';
-import { removeFromCartHandler } from '../../actions/cartActions';
 
-const CartItem = ({ product, productIndex, dispatch }) => {
-  const removeFromCart = () => dispatch(removeFromCartHandler(productIndex));
+const CartItem = ({ product, productIndex, removeFromCartHandler }) => {
+  const removeFromCart = () => removeFromCartHandler(productIndex);
 
   return (
     <div>
@@ -22,7 +21,7 @@ const CartItem = ({ product, productIndex, dispatch }) => {
 CartItem.propTypes = {
   product: CartItemPropTypes.isRequired,
   productIndex: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  removeFromCartHandler: PropTypes.func.isRequired,
 };
 
 export default CartItem;

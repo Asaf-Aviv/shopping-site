@@ -1,11 +1,8 @@
 const shouldIncQuantity = (products, newProduct) => {
-  console.log(newProduct);
   const productIndex = products
     .findIndex(({ product, size, color }) => product._id === newProduct.product._id
       && size === newProduct.size
       && color === newProduct.color);
-
-  console.log(productIndex);
 
   if (productIndex !== -1) {
     const updatedProduct = {
@@ -19,6 +16,7 @@ const shouldIncQuantity = (products, newProduct) => {
       ...products.slice(productIndex + 1),
     ];
   }
+
   return [...products, newProduct];
 };
 
