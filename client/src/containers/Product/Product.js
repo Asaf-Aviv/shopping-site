@@ -16,7 +16,7 @@ class Product extends Component {
     }).isRequired,
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const { product, fetchProduct } = this.props;
 
     if (!Object.keys(product).length) {
