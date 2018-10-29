@@ -5,6 +5,4 @@ client/dist
 
 client/src/assets
 
-# public
-
 .env
