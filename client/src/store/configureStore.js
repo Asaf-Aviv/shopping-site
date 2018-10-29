@@ -23,7 +23,7 @@ export default () => {
   const store = createStore(rootReducer, persistedState, composedEnhancers);
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
-    module.hot.accept('./reducers', () => store.replaceReducer(rootReducer));
+    module.hot.accept('../reducers', () => store.replaceReducer(rootReducer));
   }
 
   return store;
