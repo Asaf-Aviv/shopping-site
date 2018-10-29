@@ -5,6 +5,8 @@ client/dist
 
 client/src/assets
 
+public
+
 coverage
 
 .env
