@@ -19,4 +19,13 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'func-names': 0,
   },
+  overrides: [
+    {
+      files: ["*test.js"],
+      rules: {
+        'no-undef': 0,
+        'react/react-in-jsx-scope': 0,
+      },
+    },
+  ],
 };
