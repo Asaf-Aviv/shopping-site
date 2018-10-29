@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { ProductPropTypes } from '../../PropTypes/propTypes';
+import { ProductPropTypes } from '../../PropTypes';
 import SizePicker from '../SizePicker';
 import ColorPicker from '../ColorPicker';
 import QuantityPicker from '../QuantityPicker';

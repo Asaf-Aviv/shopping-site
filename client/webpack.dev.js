@@ -15,6 +15,9 @@ module.exports = merge(common, {
       '/api': {
         target: 'http://[::1]:5000/',
       },
+      '/static': {
+        target: 'http://[::1]:5000/',
+      },
     },
   },
   plugins: [

@@ -8,7 +8,8 @@
     "client": "cd client && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm:server\" \"npm:client\"",
     "test": "jest --forceExit",
-    "watch": "jest --watch"
+    "watch": "jest --watch",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/Asaf-Aviv/shopping-site#readme",
   "dependencies": {
+    "date-fns": "^2.0.0-alpha.24",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongoose": "^5.3.2",

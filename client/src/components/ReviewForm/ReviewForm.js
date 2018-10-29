@@ -30,7 +30,7 @@ class ReviewForm extends Component {
     axios.post('/api/store/product/reviews', { productId, review })
       .then(
         ({ data: updatedDoc }) => modifyProduct(updatedDoc),
-        () => console.log('something went wrong'),
+        err => console.log('something went wrong', err),
       );
   }
 

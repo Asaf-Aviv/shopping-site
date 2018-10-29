@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { CartItemPropTypes } from '../../PropTypes/propTypes';
+import { CartItemPropTypes } from '../../PropTypes';
 
 const CartItem = ({ product, productIndex, removeFromCartHandler }) => {
   const removeFromCart = () => removeFromCartHandler(productIndex);

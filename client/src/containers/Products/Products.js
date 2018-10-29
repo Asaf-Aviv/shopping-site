@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../../components/ProductCard';
 import LoadingIndicator from '../../components/LoadingIndicator';
-import { ProductPropTypes } from '../../PropTypes/propTypes';
+import { ProductPropTypes } from '../../PropTypes';
 
 import './Products.sass';
 

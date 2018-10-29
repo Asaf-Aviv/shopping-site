@@ -35,3 +35,8 @@ export const ReviewPropTypes = PropTypes.shape({
   timestamp: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
 });
+
+export const ColorPropTypes = PropTypes.shape({
+  color: PropTypes.string,
+  quantity: PropTypes.number,
+});

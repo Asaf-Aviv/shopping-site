@@ -7,7 +7,7 @@ const ProductImage = ({ imgName, alt }) => (
   <figure className="product__figure">
     <img
       className="product__img"
-      src={require(`../../assets/images/${imgName}`)}
+      src={`static/images/${imgName}`}
       alt={alt}
     />
   </figure>

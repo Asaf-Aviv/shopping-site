@@ -1,8 +1,7 @@
 import React from 'react';
-import { distanceInWordsStrict } from 'date-fns';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import StarIcon from '../../assets/svgs/star.svg';
-import { ReviewPropTypes } from '../../PropTypes/propTypes';
-
+import { ReviewPropTypes } from '../../PropTypes';
 import './Review.sass';
 
 const Review = ({ review }) => (
@@ -15,7 +14,7 @@ const Review = ({ review }) => (
           <span>{review.rating}</span>
         </div>
         <span className="review__timestamp">
-          {`${distanceInWordsStrict(review.timestamp, new Date(), { includeSeconds: true })} ago`}
+          {distanceInWordsToNow(review.timestamp)}
         </span>
       </div>
       <p className="review__body">{review.body}</p>

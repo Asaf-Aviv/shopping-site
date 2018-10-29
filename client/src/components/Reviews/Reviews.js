@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ReviewPropTypes } from '../../PropTypes/propTypes';
+import { ReviewPropTypes } from '../../PropTypes';
 import ReviewForm from '../ReviewForm';
 import Review from '../Review';
 

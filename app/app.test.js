@@ -114,11 +114,11 @@ describe('App test', () => {
     });
   });
 
-  describe('404', () => {
-    it('Should return 404', async () => {
+  describe('Not exists URL', () => {
+    it('Should return 200 for all non a existed URL', async () => {
       await request(server)
         .get('/not_exists')
-        .expect(404);
+        .expect(200);
     });
   });
 });

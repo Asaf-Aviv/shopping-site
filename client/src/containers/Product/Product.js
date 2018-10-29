@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProductImage from '../../components/ProductImage';
-import { ProductPropTypes } from '../../PropTypes/propTypes';
+import { ProductPropTypes } from '../../PropTypes';
 
 class Product extends Component {
   static propTypes = {
