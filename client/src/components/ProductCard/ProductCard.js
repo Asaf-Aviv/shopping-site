@@ -93,7 +93,9 @@ class ProductCard extends Component {
           >
             {name}
           </Link>
-          <ProductImage imgName={image} alt={type} />
+          <div className="product__img">
+            <ProductImage imgName={image} alt={type} />
+          </div>
           <p className="product__description">{description}</p>
           <span className="product__price">{`${calculatePrice(price, discount)}$`}</span>
           {discount > 0 && <span className="product__discount">{`${discount}% off`}</span>}

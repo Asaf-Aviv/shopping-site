@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
   name: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
+    type: String, required: true, trim: true, unique: true,
   },
   image: { type: String, required: true },
   price: { type: Number, required: true },
@@ -15,15 +12,9 @@ const productSchema = new mongoose.Schema({
   gender: { type: String, required: true, validate: /Female|Male/ },
   colors: [
     {
-      _id: false,
-      color: {
-        type: String,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
+      id: false,
+      color: { type: String, required: true },
+      quantity: { type: Number },
     },
   ],
   sizes: [{ type: Number }],

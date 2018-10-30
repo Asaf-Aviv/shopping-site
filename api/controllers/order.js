@@ -27,13 +27,16 @@ exports.createOrder = async (req, res, next) => {
           { _id: product._id, 'colors.color': color },
           { $inc: { 'colors.$.quantity': -quantity } },
           { new: true },
-        ).then((doc) => {
-          totalPrice += doc.price * quantity;
+        ).then(({ discount, price }) => {
+          totalPrice += price - price * (discount / 100) * quantity;
         }),
       ),
     );
 
-    const order = await new Order({ items: orderProducts, totalPrice }).save();
+    const order = await new Order({
+      items: orderProducts,
+      totalPrice: totalPrice.toFixed(2),
+    }).save();
 
     res.send(order);
   } catch (error) {

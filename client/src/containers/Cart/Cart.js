@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CartItemPropTypes } from '../../PropTypes';
-import CartItem from '../../components/CartItem';
+import OrderItemSummary from '../../components/OrderItemSummary';
+import List from '../../components/List';
 
 class Cart extends Component {
   static propTypes = {
@@ -11,6 +12,7 @@ class Cart extends Component {
       totalPrice: PropTypes.number,
     }).isRequired,
     orderHandler: PropTypes.func.isRequired,
+    removeFromCartHandler: PropTypes.func.isRequired,
   };
 
   submitOrder = () => {
@@ -19,29 +21,33 @@ class Cart extends Component {
   };
 
   render() {
-    const { cart } = this.props;
+    const { cart, removeFromCartHandler } = this.props;
 
     if (!cart.products.length) {
       return (
-        <div>
+        <main>
           <h1>Your cart is empty!</h1>
           <Link to="/store">Shop Now!</Link>
-        </div>
+        </main>
       );
     }
 
     return (
-      <div>
-        {cart.products.map((product, i) => (
-          <CartItem
-            key={`${product._id}${product.color}${product.size}`}
-            productIndex={i}
-            product={product}
-          />
-        ))}
+      <main>
+        <h1 className="cart__title">My Cart</h1>
+        <List>
+          {cart.products.map((item, i) => (
+            <OrderItemSummary
+              key={`${item._id}${item.color}${item.size}`}
+              productIndex={i}
+              item={item}
+              removeProduct={() => removeFromCartHandler(i)}
+            />
+          ))}
+        </List>
         <h1>{cart.totalPrice}</h1>
         <button type="button" onClick={this.submitOrder}>Submit Order</button>
-      </div>
+      </main>
     );
   }
 }

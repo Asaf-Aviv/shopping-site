@@ -42,7 +42,11 @@ class Products extends Component {
   }
 
   render() {
-    const { products: { productsList, isFetching, error } } = this.props;
+    const {
+      products: {
+        productsList, isFetching, error, isLastPage,
+      },
+    } = this.props;
 
     return (
       <>
@@ -58,6 +62,7 @@ class Products extends Component {
         </ul>
         <div className="loading-trigger">
           {isFetching && <LoadingIndicator />}
+          {isLastPage && <h1>No more products</h1>}
         </div>
       </>
     );

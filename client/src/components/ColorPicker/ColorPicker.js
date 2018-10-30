@@ -31,7 +31,12 @@ class ColorPicker extends Component {
           chooseHandler={this.chooseColor}
           text="Color"
         />
-        {chosenColor.quantity && <p>{`Only ${chosenColor.quantity} left!`}</p>}
+        {chosenColor.quantity !== undefined
+          && (chosenColor.quantity > 0
+            ? <p>{`Only ${chosenColor.quantity} left!`}</p>
+            : <p>Out of stock!</p>
+          )
+        }
       </div>
     );
   }
