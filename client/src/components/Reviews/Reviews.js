@@ -52,13 +52,11 @@ class Reviews extends Component {
             {reviews.length === 0 && <h3>No reviews yet</h3>}
             {reviews.length > 0
               && (
-                <>
-                  <ul className="reviews__list">
-                    {reviews.map(review => (
-                      <Review key={review.name + review.timestamp} review={review} />
-                    ))}
-                  </ul>
-                </>
+                <ul className="reviews__list">
+                  {reviews.map(review => (
+                    <Review key={review.name + review.timestamp} review={review} />
+                  ))}
+                </ul>
               )
             }
           </div>
