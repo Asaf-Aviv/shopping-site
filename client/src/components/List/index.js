@@ -1,4 +1,4 @@
 import List from './List';
-import withShadow from '../withShadow/withShadow';
+import withShadowAndBorderRadius from '../withShadowAndBorderRadius';
 
-export default withShadow(List);
+export default withShadowAndBorderRadius(List);
