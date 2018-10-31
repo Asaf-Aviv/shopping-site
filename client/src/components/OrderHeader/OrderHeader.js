@@ -5,13 +5,13 @@ import format from 'date-fns/format';
 import './OrderHeader.sass';
 
 const OrderHeader = ({ orderId, timestamp, totalPrice }) => (
-  <div className="order__header">
+  <header className="order__header">
     <h4 className="header__items">{`Order ID: ${orderId}`}</h4>
     <h4 className="header__items">
       {`Ordered on: ${format(timestamp, 'DD/MM/YYYY')}`}
     </h4>
     <h4 className="header__items">{`Total Price: ${totalPrice}$`}</h4>
-  </div>
+  </header>
 );
 
 OrderHeader.propTypes = {
