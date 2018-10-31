@@ -1,3 +1,3 @@
 module.exports = {
-  "setupTestFrameworkScriptFile": "./src/setupTests.js"
+  setupTestFrameworkScriptFile: './src/setupTests.js',
 };
