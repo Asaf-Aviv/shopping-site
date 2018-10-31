@@ -49,7 +49,7 @@ class Products extends Component {
     } = this.props;
 
     return (
-      <>
+      <div className="products__list-container">
         <ul className="products__list">
           {isFetching && <h3>Fetching...</h3>}
           {error && <h3>Products not found</h3>}
@@ -64,7 +64,7 @@ class Products extends Component {
           {isFetching && <LoadingIndicator />}
           {isLastPage && <h1>No more products</h1>}
         </div>
-      </>
+      </div>
     );
   }
 }
