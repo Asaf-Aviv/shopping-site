@@ -8,31 +8,37 @@ import './NavBar.sass';
 const NavBar = ({ numOfCartItems, numOfOrders }) => (
   <nav className="nav">
     <Container>
-      <div className="nav__menu">
-        <NavLink
-          to="/store"
-          className="nav__link"
-          activeClassName="nav__link--active"
-        >
-          Store
-        </NavLink>
-        <NavLink
-          to="/cart"
-          className="nav__link"
-          activeClassName="nav__link--active"
-        >
-          Cart
-          {numOfCartItems > 0 && <span className="nav__badge">{numOfCartItems}</span>}
-        </NavLink>
-        <NavLink
-          to="/orders"
-          className="nav__link"
-          activeClassName="nav__link--active"
-        >
-          Orders
-          {numOfOrders > 0 && <span className="nav__badge">{numOfOrders}</span>}
-        </NavLink>
-      </div>
+      <ul className="nav__menu">
+        <li className="nav__item">
+          <NavLink
+            to="/store"
+            className="nav__link"
+            activeClassName="nav__link--active"
+          >
+            Store
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink
+            to="/cart"
+            className="nav__link"
+            activeClassName="nav__link--active"
+          >
+            Cart
+            {numOfCartItems > 0 && <span className="nav__badge">{numOfCartItems}</span>}
+          </NavLink>
+        </li>
+        <li className="nav__item">
+          <NavLink
+            to="/orders"
+            className="nav__link"
+            activeClassName="nav__link--active"
+          >
+            Orders
+            {numOfOrders > 0 && <span className="nav__badge">{numOfOrders}</span>}
+          </NavLink>
+        </li>
+      </ul>
     </Container>
   </nav>
 );
