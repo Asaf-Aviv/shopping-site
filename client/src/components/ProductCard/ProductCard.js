@@ -53,7 +53,7 @@ class ProductCard extends Component {
     const { product, addToCartHandler } = this.props;
     const { chosenColor, chosenSize, chosenQuantity } = this.state;
 
-    if (!chosenColor.color || !chosenSize || !chosenQuantity) {
+    if (!chosenColor.color || (!chosenSize && product.sizes.length) || !chosenQuantity) {
       this.setState({ addToCarterror: 'Please choose color, (size) and quantity' });
       return;
     }
