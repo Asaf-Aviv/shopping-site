@@ -28,7 +28,7 @@ exports.createOrder = async (req, res, next) => {
           { $inc: { 'colors.$.quantity': -quantity } },
           { new: true },
         ).then(({ discount, price }) => {
-          totalPrice += price - price * (discount / 100) * quantity;
+          totalPrice += (price - price * (discount / 100)) * quantity;
         }),
       ),
     );
