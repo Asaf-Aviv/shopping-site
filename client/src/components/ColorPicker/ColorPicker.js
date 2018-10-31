@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import DropDown from '../DropDown';
 import { ColorPropTypes } from '../../PropTypes';
 
-
 const ColorPicker = ({ colors, chosenColor, chooseColorHandler }) => {
   const chooseColor = (e) => {
     const colorName = e.target.getAttribute('value');
