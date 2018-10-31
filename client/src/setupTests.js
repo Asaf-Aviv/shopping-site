@@ -8,3 +8,12 @@ global.React = React;
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
+
+global.swallowErrors = (codeToRun) => {
+  const { error } = console;
+  console.error = () => {};
+
+  codeToRun();
+
+  console.error = error;
+};
