@@ -4,10 +4,11 @@ import { saveStateToStorage } from '../utils';
 const store = configureStore();
 
 store.subscribe(() => {
-  const state = store.getState();
+  const { cart, orders } = store.getState();
+
   saveStateToStorage({
-    cart: state.cart,
-    orders: state.orders,
+    cart,
+    orders,
   });
 });
 
