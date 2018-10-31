@@ -5,7 +5,7 @@
   width: 100%
   display: flex
   align-items: center
-  height: 50px
+  height: 70px
   box-shadow: 0 2px 5px #dedede
   background: #FFF
   z-index: 100
@@ -13,6 +13,8 @@
     display: flex
     list-style: none
   &__item
+    &:not(:first-child)
+      margin-left: 10px
     &:nth-child(2)
       margin-left: auto
       margin-right: 30px
@@ -20,6 +22,7 @@
     position: relative
     user-select: none
     padding: 10px 0
+    font-size: 20px
     text-decoration: none
     font-weight: 700
     color: #cecece
@@ -31,10 +34,10 @@
 
 .nav__badge
   position: absolute
-  top: -4px
-  right: -12px
+  top: -5px
+  right: -20px
   border-radius: 50%
   background: #2dc0dd
-  font-size: 11px
-  padding: 3px 5px
+  font-size: 15px
+  padding: 3px 7px
   color: #FFF
