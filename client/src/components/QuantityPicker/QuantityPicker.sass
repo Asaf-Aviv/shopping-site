@@ -1,24 +1,29 @@
-.quantity-picker
-  display: inline-flex
-  box-shadow: 0px 3px 10px #cbcbcb
-  margin-bottom: 10px
-  &__chosen
-    user-select: none
-    line-height: 40px
-    display: inline-block
-    width: 50px
-    font-size: 24px
-  &__btn
-    user-select: none
-    width: 50px
-    color: #FFF
-    border: 0
-    font-size: 24px
-    &--negative
-      background: #d60808
-      &:hover
-        background: #f91919
-    &--positive
-      background: #00a700
-      &:hover
-        background: #0ed40e
+.quantity
+  &__title
+    margin-bottom: 10px
+  &-picker
+    display: inline-flex
+    box-shadow: 0px 3px 10px #cbcbcb
+    margin-bottom: 10px
+    overflow: hidden
+    border-radius: 8px
+    &__chosen
+      user-select: none
+      line-height: 40px
+      display: inline-block
+      width: 50px
+      font-size: 24px
+    &__btn
+      user-select: none
+      width: 50px
+      color: #FFF
+      border: 0
+      font-size: 24px
+      &--negative
+        background: #d60808
+        &:hover
+          background: #f91919
+      &--positive
+        background: #00a700
+        &:hover
+          background: #0ed40e
