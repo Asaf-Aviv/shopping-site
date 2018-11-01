@@ -1,0 +1,76 @@
+.search-bar
+  flex: 1
+  margin: 0 40px
+  height: 40px
+  &__input-wrapper
+    position: relative
+    display: flex
+    height: 100%
+    border-radius: 8px
+    max-width: 500px
+    margin: 0 auto
+    box-shadow: 0 2px 20px -2px #afbbb8
+  &__input
+    border: 2px solid #adf1ff
+    border-radius: 8px
+    outline: 0
+    padding: 0px 0px 1px 15px
+    font-size: 20px
+    letter-spacing: 0.5px
+    flex: 1
+    &:focus
+      box-shadow: 0 0 5px 1px #adf1ff
+  &__results
+    display: none
+    position: absolute
+    top: 45px
+    left: 0
+    width: 100%
+    border-radius: 8px
+    box-shadow: 0 5px 15px #cecbcb
+    z-index: 50
+    &--open
+      display: block
+  &__list
+    background: #FFF
+    position: relative
+    padding 5px 0
+    min-height: 80px
+    flex-direction: column
+    max-height: 350px
+    height: 100%
+    overflow-y: scroll !important
+    overflow-x: hidden !important
+    &::-webkit-scrollbar
+      display: none
+  &__item
+    &:hover
+      background: #eee
+    &:not(:first-of-type)
+      border-top: 1px solid #dedede
+  &__link
+    display: flex
+    align-items: center
+    padding: 5px 15px
+    height: 80px
+    text-decoration: none
+    color: inherit
+  &__img .product__img
+    display: block
+    height: 50px
+    width: auto
+    border-radius: 3px
+  &__details
+    padding-left: 15px
+  &__name
+    color: #2f8f9c;
+    font-weight: 700;
+  &__description
+    flex: 1
+  &__price
+    width: 60px
+  &__info
+    height: 80px
+    display: flex
+    align-items: center
+    justify-content: center
