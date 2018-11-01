@@ -35,9 +35,6 @@ class DropDown extends Component {
   }
 
   toggleSelect = (e) => {
-    if (e.type === 'focus') {
-      console.log(e.which);
-    }
     if (!e || e.keyCode === 13 || !e.keyCode) {
       this.setState(prevState => ({ isOpen: !prevState.isOpen }));
     }
@@ -57,7 +54,6 @@ class DropDown extends Component {
       <div ref={this.dropdown} className="dropdown">
         <span
           className="dropdown__chosen"
-          onFocus={this.toggleSelect}
           onClick={this.toggleSelect}
           onKeyDown={this.toggleSelect}
           role="listbox"
