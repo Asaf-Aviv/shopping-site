@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Container from '../Container';
+import SearchBar from '../SearchBar';
 
 import './NavBar.sass';
 
@@ -18,6 +19,7 @@ const NavBar = ({ numOfCartItems, numOfOrders }) => (
             Store
           </NavLink>
         </li>
+        <SearchBar />
         <li className="nav__item">
           <NavLink
             to="/cart"

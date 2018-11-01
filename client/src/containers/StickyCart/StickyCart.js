@@ -9,20 +9,19 @@ import './StickyCart.sass';
 const StickyCart = ({ cart, removeFromCartHandler }) => (
   <div className="sticky-cart">
     <StickyCartHeader totalPrice={cart.totalPrice} />
-    {
-      cart.products.length
-        ? (
-          <List classes="sticky-cart__list">
-            {cart.products.map((item, i) => (
-              <StickyCartItem
-                key={`${item.product._id}${item.color}${item.size}`}
-                item={item}
-                removeProduct={() => removeFromCartHandler(i)}
-              />
-            ))}
-          </List>
-        )
-        : <h2 className="sticky-cart__empty">Your cart is empty :(</h2>
+    {cart.products.length
+      ? (
+        <List classes="sticky-cart__list">
+          {cart.products.map((item, i) => (
+            <StickyCartItem
+              key={`${item.product._id}${item.color}${item.size}`}
+              item={item}
+              removeProduct={() => removeFromCartHandler(i)}
+            />
+          ))}
+        </List>
+      )
+      : <h2 className="sticky-cart__empty">Your cart is empty :(</h2>
     }
   </div>
 );

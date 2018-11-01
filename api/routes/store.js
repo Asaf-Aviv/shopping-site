@@ -5,7 +5,7 @@ router.get('/products', ProductController.getAllProducts);
 
 router.get('/product/:productId', ProductController.getProductById);
 
-router.get('/products/search', ProductController.searchProducts);
+router.get('/products/search', ProductController.searchProductsByName);
 
 router.post('/product', ProductController.addProduct);
 

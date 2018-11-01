@@ -22,7 +22,7 @@ exports.getProductById = async (req, res, next) => {
   }
 };
 
-exports.searchProducts = async (req, res, next) => {
+exports.searchProductsByName = async (req, res, next) => {
   try {
     const productNameRegex = new RegExp(`${req.query.productName}`, 'i');
     const products = await Product.searchProducts(productNameRegex);
