@@ -16,14 +16,12 @@ export default (state = initialState, action) => {
       };
     case 'SEARCHBAR_RECEIVED_PRODUCTS':
       return {
+        ...initialState,
         products: action.products,
-        isFetching: false,
-        error: false,
       };
     case 'SEARCHBAR_ERROR':
       return {
-        ...state,
-        isFetching: false,
+        ...initialState,
         error: true,
       };
     case 'RESET_SEARCHBAR':
