@@ -4,7 +4,6 @@ const initialState = {
     isFetching: false,
     error: false,
     showingAllProducts: false,
-    page: 0,
     isLastPage: false,
   },
   chosenProduct: {
@@ -43,7 +42,6 @@ export default (state = initialState, action) => {
           productsList: [...state.products.productsList, ...action.products],
           isFetching: false,
           error: false,
-          page: state.products.page + 1,
           isLastPage: action.products.length < 6,
         },
       };
@@ -56,6 +54,8 @@ export default (state = initialState, action) => {
           error: true,
         },
       };
+    case 'RESET_PRODUCTS':
+      return initialState;
     case 'REQUEST_PRODUCT':
       return {
         ...state,

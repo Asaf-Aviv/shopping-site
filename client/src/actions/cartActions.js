@@ -24,8 +24,6 @@ export const addToCartHandler = product => (dispatch) => {
 };
 
 export const removeFromCartHandler = productIndex => (dispatch) => {
-  console.log('dispatching');
-  console.log(productIndex);
   dispatch(removeFromCart(productIndex));
   dispatch(updateCartTotal());
 };

@@ -3,10 +3,14 @@ import productReducer from './productReducer';
 import cartReducer from './cartReducer';
 import ordersReducer from './ordersReducer';
 import searchBarReducer from './searchBarReducer';
+import filtersReducer from './filtersReducer';
+import queryReducer from './queryReducer';
 
 export default combineReducers({
   store: productReducer,
   cart: cartReducer,
   orders: ordersReducer,
   searchBar: searchBarReducer,
+  filters: filtersReducer,
+  query: queryReducer,
 });

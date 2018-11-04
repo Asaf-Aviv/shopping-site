@@ -7,8 +7,8 @@ exports.fakeProduct1 = {
   type: 'Hat',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
   colors: [
-    { color: 'Brown', quantity: '2' },
-    { color: 'Red', quantity: '4' },
+    { color: 'brown', quantity: '2' },
+    { color: 'red', quantity: '4' },
   ],
 };
 
@@ -16,12 +16,12 @@ exports.fakeProduct2 = {
   name: 'pants - P1',
   price: 24.99,
   discount: 20,
-  type: 'Pants',
+  type: 'pants',
   gender: 'Female',
   image: 'pants.jpg',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
   colors: [
-    { color: 'Blue', quantity: '5' },
+    { color: 'blue', quantity: '5' },
   ],
 };
 
@@ -29,7 +29,7 @@ exports.invalidProduct = {
   image: 'shirt.jpg',
   price: 9.99,
   discount: 25,
-  type: 'Shirt',
+  type: 'shirt',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
   colors: [
     { color: 'red', quantity: '2' },
