@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
   discount: { type: Number, required: true },
   description: { type: String, required: true },
   type: { type: String, required: true },
-  gender: { type: String, required: true, validate: /Female|Male/ },
+  gender: { type: String, required: true, validate: /female|male/ },
   colors: [
     {
       id: false,

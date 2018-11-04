@@ -6,13 +6,13 @@ import { ProductPropTypes } from '../../PropTypes';
 
 import './Products.sass';
 
+
 class Products extends Component {
   static propTypes = {
     products: PropTypes.shape({
       productsList: PropTypes.arrayOf(ProductPropTypes).isRequired,
       isFetching: PropTypes.bool.isRequired,
       error: PropTypes.bool.isRequired,
-      page: PropTypes.number.isRequired,
       isLastPage: PropTypes.bool.isRequired,
     }).isRequired,
     fetchProducts: PropTypes.func.isRequired,
@@ -21,16 +21,7 @@ class Products extends Component {
   componentDidMount = () => {
     const { fetchProducts } = this.props;
 
-    const infiniteScrollObserver = new IntersectionObserver((entries) => {
-      const { products: { isFetching, isLastPage } } = this.props;
-
-      if (isLastPage) return;
-
-      if (entries[0].intersectionRatio > 0 && !isFetching) {
-        fetchProducts();
-      }
-    }, { threshold: 0.5 });
-
+    const infiniteScrollObserver = this.createInfiniteScroll(fetchProducts);
     const loadingTrigger = document.querySelector('.loading-trigger');
     infiniteScrollObserver.observe(loadingTrigger);
     window.infiniteScrollObserver = infiniteScrollObserver;
@@ -40,6 +31,17 @@ class Products extends Component {
     const loadingTrigger = document.querySelector('.loading-trigger');
     window.infiniteScrollObserver.unobserve(loadingTrigger);
   }
+
+  createInfiniteScroll = fn => (
+    new IntersectionObserver((entries) => {
+      const { products: { isFetching, isLastPage } } = this.props;
+
+      if (isLastPage) return;
+      if (entries[0].intersectionRatio > 0 && !isFetching) {
+        fn();
+      }
+    })
+  );
 
   render() {
     const {

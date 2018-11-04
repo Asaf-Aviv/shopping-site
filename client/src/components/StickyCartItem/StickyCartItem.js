@@ -5,7 +5,7 @@ import StickyCartItemDetails from '../StickyCartItemDetails';
 import ProductImage from '../ProductImage';
 
 const StickyCartItem = ({ item, removeProduct }) => (
-  <div className="sticky-cart__item">
+  <li className="sticky-cart__item">
     <div className="sticky-cart__img">
       <ProductImage
         imgName={item.product.image}
@@ -30,7 +30,7 @@ const StickyCartItem = ({ item, removeProduct }) => (
     >
       X
     </button>
-  </div>
+  </li>
 );
 
 StickyCartItem.propTypes = {

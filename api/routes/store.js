@@ -7,6 +7,8 @@ router.get('/product/:productId', ProductController.getProductById);
 
 router.get('/products/search', ProductController.searchProductsByName);
 
+router.get('/products/query', ProductController.searchProductsByQuery);
+
 router.post('/product', ProductController.addProduct);
 
 router.post('/product/quantity', ProductController.updateProductQuantity);

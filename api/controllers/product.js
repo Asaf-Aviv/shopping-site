@@ -1,9 +1,35 @@
 const Product = require('../../models/Product');
 
 exports.getAllProducts = async (req, res, next) => {
-  const { page } = req.query;
+  const { pagination } = req.query;
   try {
-    const products = await Product.fetchProductsByPage(page);
+    const products = await Product.fetchProductsByPage(pagination);
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.searchProductsByQuery = async (req, res, next) => {
+  try {
+    const { pagination } = req.query;
+
+    const query = Object.keys(req.query)
+      .reduce((queryObj, key) => {
+        if (key === 'discount') {
+          queryObj[key] = { $gt: 0 };
+        } else if (key === 'colors') {
+          queryObj[`${key}.color`] = { $in: req.query[key].split(',') };
+        } else if (key !== 'pagination') {
+          queryObj[key] = { $in: req.query[key].split(',') };
+        }
+        return queryObj;
+      }, {});
+
+    const products = await Product.find(query)
+      .skip(pagination * 6)
+      .limit(6);
+
     res.send(products);
   } catch (error) {
     next(error);
