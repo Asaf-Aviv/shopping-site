@@ -1,0 +1,34 @@
+.checkbox
+  display: none
+
+.label
+  display: block
+  position: relative
+  padding: 0 20px 0 30px
+  margin-bottom: 10px
+  cursor: pointer
+  transition: color 200ms
+  &:hover
+    color: #6cc0e5
+  &:before
+    content: ''
+    display: block
+    width: 15px
+    height: 15px
+    border: 1px solid #6cc0e5
+    position: absolute
+    left: 5px
+    top: 0
+    opacity: .6
+    transition: all 200ms, border-color .08s
+  &--checked
+    color: #6cc0e5
+    &:before
+      width: 7.5px
+      top: -5px
+      left: 10px
+      border-radius: 0
+      opacity: 1
+      border-top-color: transparent
+      border-left-color: transparent
+      transform: rotate(45deg)
