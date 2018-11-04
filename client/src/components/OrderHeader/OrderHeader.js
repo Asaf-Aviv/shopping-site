@@ -6,11 +6,11 @@ import './OrderHeader.sass';
 
 const OrderHeader = ({ orderId, timestamp, totalPrice }) => (
   <header className="order__header">
-    <h4 className="header__items">{`Order ID: ${orderId}`}</h4>
-    <h4 className="header__items">
+    <span className="header__items">{`Order ID: ${orderId}`}</span>
+    <span className="header__items">
       {`Ordered on: ${format(timestamp, 'DD/MM/YYYY')}`}
-    </h4>
-    <h4 className="header__items">{`Total Price: ${totalPrice}$`}</h4>
+    </span>
+    <span className="header__items">{`Total Price: ${totalPrice}$`}</span>
   </header>
 );
 

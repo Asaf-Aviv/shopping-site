@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { CartItemPropTypes } from '../../PropTypes';
 import OrderItemSummary from '../../components/OrderItemSummary';
 import List from '../../components/List';
+import Container from '../../components/Container';
+
+import './Cart.sass';
 
 const Cart = ({ cart, orderHandler, removeFromCartHandler }) => {
   const submitOrder = () => {
@@ -13,26 +16,38 @@ const Cart = ({ cart, orderHandler, removeFromCartHandler }) => {
   if (!cart.products.length) {
     return (
       <main>
-        <h1>Your cart is empty!</h1>
-        <Link to="/store">Shop Now!</Link>
+        <Container>
+          <h1 className="weight-300">Your cart is empty!</h1>
+          <Link to="/store" className="btn btn--primary">Shop Now!</Link>
+        </Container>
       </main>
     );
   }
 
   return (
     <main>
-      <h1 className="cart__title">My Cart</h1>
-      <List>
-        {cart.products.map((item, i) => (
-          <OrderItemSummary
-            key={`${item._id}${item.color}${item.size}`}
-            item={item}
-            removeProduct={() => removeFromCartHandler(i)}
-          />
-        ))}
-      </List>
-      <h1>{cart.totalPrice}</h1>
-      <button type="button" onClick={submitOrder}>Submit Order</button>
+      <Container>
+        <h1 className="weight-300">My Cart</h1>
+        <List classes="border-radius shadow">
+          {cart.products.map((item, i) => (
+            <OrderItemSummary
+              key={`${item._id}${item.color}${item.size}`}
+              item={item}
+              removeProduct={() => removeFromCartHandler(i)}
+            />
+          ))}
+        </List>
+        <div className="cart-total">
+          <h2 className="cart-total__title">{`Total: ${cart.totalPrice}$`}</h2>
+          <button
+            type="button"
+            onClick={submitOrder}
+            className="btn btn--primary"
+          >
+            Order
+          </button>
+        </div>
+      </Container>
     </main>
   );
 };

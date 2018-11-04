@@ -130,7 +130,7 @@ class ProductCard extends Component {
           />
           <button
             type="button"
-            className="add-to-cart__btn"
+            className="btn btn--primary"
             onClick={this.addToCart}
           >
             Add to cart

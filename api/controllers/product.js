@@ -1,14 +1,14 @@
 const Product = require('../../models/Product');
 
-exports.getAllProducts = async (req, res, next) => {
-  const { pagination } = req.query;
-  try {
-    const products = await Product.fetchProductsByPage(pagination);
-    res.send(products);
-  } catch (error) {
-    next(error);
-  }
-};
+// exports.getAllProducts = async (req, res, next) => {
+//   const { pagination } = req.query;
+//   try {
+//     const products = await Product.fetchProductsByPage(pagination);
+//     res.send(products);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 exports.searchProductsByQuery = async (req, res, next) => {
   try {

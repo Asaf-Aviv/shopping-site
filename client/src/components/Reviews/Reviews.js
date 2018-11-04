@@ -33,7 +33,7 @@ class Reviews extends Component {
       <>
         <button
           type="button"
-          className="reviews__toggler"
+          className="btn btn--secondary"
           onClick={this.toggleReviews}
           onKeyPress={this.toggleReviews}
         >

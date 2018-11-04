@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import capitalize from 'lodash.capitalize';
 
 import './DropDown.sass';
 
@@ -59,7 +60,7 @@ class DropDown extends Component {
           role="listbox"
           tabIndex="0"
         >
-          {chosen || text}
+          {capitalize(chosen || text)}
         </span>
         <ul className={`dropdown__menu ${isOpen ? 'dropdown__menu--open' : ''}`}>
           {items.map(item => (
@@ -73,7 +74,7 @@ class DropDown extends Component {
               onClick={this.chooseItemAndClose}
               onKeyDown={this.chooseItemAndClose}
             >
-              {item}
+              {capitalize(item)}
             </li>
           ))}
         </ul>
