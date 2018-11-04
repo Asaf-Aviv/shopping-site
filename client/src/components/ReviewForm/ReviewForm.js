@@ -47,7 +47,7 @@ class ReviewForm extends Component {
 
     return (
       <div className="add-review">
-        {processing && <LoadingIndicator />}
+        {processing && <LoadingIndicator transparent />}
         <h3 className="add-review__title">Add a Review</h3>
         <form onSubmit={this.handleSubmit} className="add-review__form">
           <input

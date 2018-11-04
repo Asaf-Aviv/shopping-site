@@ -17,7 +17,7 @@ const SearchBarResults = ({
 }) => (
   <div className={`search-bar__results ${isFocused && productName ? 'search-bar__results--open' : ''}`}>
     <ul className="search-bar__list">
-      { isFetching && <LoadingIndicator size={80} transparent />}
+      { isFetching && <LoadingIndicator size={80} />}
       {products.length > 0
         && products.map(product => <SearchBarItem product={product} key={product._id} />)
       }
