@@ -15,6 +15,8 @@ body
 button
   cursor: pointer
 
+.weight-300
+  font-weight: 300
 
 .pickers
   display: flex
@@ -25,3 +27,48 @@ button
 .color-picker, .size-picker
   position: relative
   width: 100px
+
+.remove-btn
+  outline: 0
+  border: 0
+  margin-left: 10px
+  transition: background 150ms, box-shadow 150ms
+  border-radius: 3px
+  background: #cf0808
+  box-shadow: 0 1px 3px #424242
+  &:hover
+    background: #ff0000
+    box-shadow: 0 2px 7px #424242
+
+.btn
+  border-radius: 5px
+  padding: 10px 30px
+  font-size: 20px
+  border: 0
+  color: #FFF
+  transition: background 200ms, box-shadow 150ms
+  box-shadow: 0px 3px 10px #7f7f7f
+  text-decoration: none
+  &:hover
+    box-shadow: 0px 5px 15px #7f7f7f
+  &--primary
+    background: #2fa3bb
+    &:hover
+      background: #2dc0dd
+  &--secondary
+    background: #26c269
+    &:hover
+      background: #13eb70
+  &--danger
+    background: #cf0808
+    &:hover
+      background: #ff0000
+
+.shadow
+  box-shadow: 0 5px 15px #cecbcb
+
+.border-radius
+  border-radius: 8px
+
+.mb-20
+  margin-bottom: 20px
