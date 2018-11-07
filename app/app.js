@@ -5,6 +5,8 @@ const app = express();
 const storeAPI = require('../api/routes/store');
 const ordersAPI = require('../api/routes/orders');
 
+app.use(express.static(path.join(__dirname, 'client/dist')));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
