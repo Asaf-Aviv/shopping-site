@@ -9,7 +9,8 @@
     "dev": "concurrently --kill-others-on-fail \"npm:server\" \"npm:client\"",
     "test": "jest --forceExit",
     "watch": "jest --watch",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
