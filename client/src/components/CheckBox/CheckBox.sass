@@ -1,3 +1,5 @@
+@import '../App/variables.sass'
+
 .checkbox
   display: none
 
@@ -9,20 +11,20 @@
   cursor: pointer
   transition: color 200ms
   &:hover
-    color: #6cc0e5
+    color: $light-blue
   &:before
     content: ''
     display: block
     width: 15px
     height: 15px
-    border: 1px solid #6cc0e5
+    border: 1px solid $light-blue
     position: absolute
     left: 5px
     top: 0
     opacity: .6
     transition: all 200ms, border-color .08s
   &--checked
-    color: #6cc0e5
+    color: $light-blue
     &:before
       width: 7.5px
       top: -5px

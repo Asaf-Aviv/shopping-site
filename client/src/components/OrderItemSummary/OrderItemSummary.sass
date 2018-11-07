@@ -1,32 +1,35 @@
+@import '../App/variables.sass'
+
 .order-item
   display: flex
   align-items: flex-start
   flex-wrap: wrap
   justify-content: space-between
   padding: 15px
+  list-style: none
+  > h4
+    flex: 0.15
   &:not(:first-of-type)
-    border-top: 1px solid #dedede
-  &__link
-    display: block
-    margin-bottom: 10px
-    color: #2f8f9c
-    font-size: 22px
-    text-decoration: none
-    width: 100%
-    &-wrapper
-      flex: 1
-      margin: 0 20px
+    border-top: 1px solid $purple
+  &__wrapper
+    flex: 0.9
+    margin: 0 20px
+  &__name
+    font-size: 20px
+    color: $purple
   &__img
     border-radius: 5px
     overflow: hidden
     height: 110px
     width: 165px
   &__details
+    flex: 0.15
     display: flex
     flex-direction: column
     margin-right: 20px
   .product__img
     width: auto
-
+  &__price
+    flex: 0.1
 .details__item
   margin-bottom: 10px

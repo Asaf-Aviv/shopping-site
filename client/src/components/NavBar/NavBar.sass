@@ -1,3 +1,5 @@
+@import '../App/variables.sass'
+
 .nav
   position: fixed
   top: 0
@@ -20,22 +22,33 @@
     position: relative
     user-select: none
     padding: 10px 0
-    font-size: 20px
+    font-size: 18px
     text-decoration: none
     font-weight: 700
     color: #cecece
     letter-spacing: 1px
+    transition: color 300ms ease-in
     &:hover
-      color: #353434
+      color: $purple
     &--active
-      color: #353434
+      color: $light-purple
+      &::after
+        content: ''
+        position: absolute
+        width: 5px
+        height: 5px
+        border-radius: 50%
+        bottom: 3px
+        right: calc(50% - 3.5px)
+        z-index: 80
+        background: $purple
 
 .nav__badge
   position: absolute
   top: -5px
   right: -20px
   border-radius: 50%
-  background: #2dc0dd
+  background: $purple
   font-size: 15px
   padding: 3px 7px
   color: #FFF

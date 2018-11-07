@@ -1,17 +1,20 @@
+@import '../App/variables.sass'
+
 .product
-  padding: 15px 0
+  padding: 10px 0
   text-align: center
   border-radius: 8px
+  border-top: 5px solid $purple
   box-shadow: 0 3px 20px #cdc6c6
-  &__link
-    display: block
+  &__header
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+  &__name
     margin-bottom: 10px
-    color: #2f8f9c
+    color: $purple
     font-size: 18px
-    text-decoration: none
-    text-align: center
-    &:hover
-      text-decoration: underline
   &__img
     width: 100%
   &__description
@@ -23,19 +26,20 @@
     display: inline-block
     margin-bottom: 10px
     font-size: 24px
-    font-weight: 700
-    color: #2f8f9c
+    color: $light-green
   &__discount
     margin-left: 10px
     font-size: 22px
     font-weight: 700
-    color: #4b22a4
+    color: $purple
 
 .rating
-  font-size: 30px
+  font-size: 22px
   &__container
+    position: absolute
+    right: 20px
+    top: -5px
     height: 30px
-    margin-bottom: 10px
     display: flex
     align-items: center
     justify-content: center

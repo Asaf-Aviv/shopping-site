@@ -1,3 +1,5 @@
+@import '../../components/App/variables.sass'
+
 .sticky-cart
   position: sticky
   top: 100px
@@ -15,27 +17,32 @@
     display: flex
     padding-left: 15px
     padding-bottom: 5px
-    border-bottom: 1px solid #dedede
-  &__title
-    flex: 1
-    display: flex
-    align-items: center
+    border-bottom: 1px solid $purple
+  &-title
     &__link
       padding: 7px 0
-      color: #2f8f9c
+      color: $purple
       font-weight: 700
       text-decoration: none
       display: inline-block
       &:hover
         text-decoration: underline
-  &__list
+  &__title
+    flex: 1
+    display: flex
+    align-items: center
+  &-item
+    &__name
+      color: $purple
+      flex: 1
+      margin-left: 10px
   &__item
     display: flex
     align-items: center
     padding: 5px 0
     height: 80px
     &:not(:first-of-type)
-      border-top: 1px solid #dedede
+      border-top: 1px solid $purple
   &__img
     padding-left: 15px
   &__img .product__img
@@ -47,7 +54,7 @@
     flex: 1
     padding-left: 15px
     text-decoration: none
-    color: #2f8f9c
+    color: $purple
     font-weight: 700
     padding: 10px 0 10px 15px
   &__details
@@ -56,9 +63,8 @@
     flex: 1
     margin-left: 5px
     &-item
-      font-weight: 700
       &:not(:first-child)
-        margin-top: 5px
+        margin-top: 3px
   &__btn
     background: #505454
     color: #FFF

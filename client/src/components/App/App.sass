@@ -1,3 +1,5 @@
+@import './variables.sass'
+
 *
   margin: 0
   padding: 0
@@ -9,7 +11,7 @@
 body
   font-family: Lato, sans-serif
   padding-top: 100px
-  color: #737373
+  color: $black
   overflow-x: hidden
 
 button
@@ -18,11 +20,17 @@ button
 .weight-300
   font-weight: 300
 
+.weight-400
+  font-weight: 400
+
+.weight-700
+  font-weight: 700
+
 .pickers
   display: flex
   justify-content: space-around
   height: 70px
-  margin-bottom: 20px
+  margin-bottom: 10px
 
 .color-picker, .size-picker
   position: relative
@@ -42,23 +50,25 @@ button
 
 .btn
   border-radius: 5px
-  padding: 10px 30px
-  font-size: 20px
   border: 0
+  display: inline-block
+  height: 40px
+  line-height: 40px
+  padding: 0 20px
   color: #FFF
   transition: background 200ms, box-shadow 150ms
-  box-shadow: 0px 3px 10px #7f7f7f
+  box-shadow: 0px 3px 5px #7f7f7f
   text-decoration: none
   &:hover
     box-shadow: 0px 5px 15px #7f7f7f
   &--primary
-    background: #2fa3bb
+    background: $purple
     &:hover
-      background: #2dc0dd
+      background: $light-purple
   &--secondary
-    background: #26c269
+    background: $dark-blue
     &:hover
-      background: #13eb70
+      background: $light-blue
   &--danger
     background: #cf0808
     &:hover

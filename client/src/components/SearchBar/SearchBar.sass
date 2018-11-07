@@ -1,3 +1,5 @@
+@import '../App/variables.sass'
+
 .search-bar
   flex: 1
   margin: 0 40px
@@ -9,17 +11,19 @@
     border-radius: 8px
     max-width: 500px
     margin: 0 auto
-    box-shadow: 0 2px 20px -2px #afbbb8
+    border: 2px solid $purple
+    box-shadow: 0 5px 20px -10px $purple
   &__input
-    border: 2px solid #adf1ff
+    border: none
     border-radius: 8px
     outline: 0
     padding: 0px 0px 1px 15px
-    font-size: 20px
+    font-size: 18px
     letter-spacing: 0.5px
     flex: 1
+    transition: box-shadow 250ms
     &:focus
-      box-shadow: 0 0 5px 1px #adf1ff
+      box-shadow: 0 5px 30px -8px $purple
   &__results
     display: none
     position: absolute
@@ -27,6 +31,7 @@
     left: 0
     width: 100%
     border-radius: 8px
+    overflow: hidden
     box-shadow: 0 5px 15px #cecbcb
     z-index: 50
     &--open
@@ -45,30 +50,30 @@
     &::-webkit-scrollbar
       display: none
   &__item
-    &:hover
-      background: #eee
-    &:not(:first-of-type)
-      border-top: 1px solid #dedede
-  &__link
     display: flex
     align-items: center
     padding: 5px 15px
     height: 80px
     text-decoration: none
     color: inherit
+    &:hover
+      background: #f4fffd
+    &:not(:first-of-type)
+      border-top: 1px solid $purple
   &__img .product__img
     display: block
     height: 50px
     width: auto
     border-radius: 3px
   &__details
+    flex: 1
     padding-left: 15px
   &__name
-    color: #2f8f9c;
-    font-weight: 700;
+    color: $purple
   &__description
     flex: 1
   &__price
+    color: $light-green
     width: 60px
   &__info
     height: 80px
