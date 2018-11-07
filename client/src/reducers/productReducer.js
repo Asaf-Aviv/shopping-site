@@ -6,11 +6,6 @@ const initialState = {
     showingAllProducts: false,
     isLastPage: false,
   },
-  chosenProduct: {
-    data: {},
-    isFetching: false,
-    error: false,
-  },
 };
 
 const replaceProduct = (products, updatedProduct) => {
@@ -56,33 +51,6 @@ export default (state = initialState, action) => {
       };
     case 'RESET_PRODUCTS':
       return initialState;
-    case 'REQUEST_PRODUCT':
-      return {
-        ...state,
-        chosenProduct: {
-          data: {},
-          isFetching: true,
-          error: false,
-        },
-      };
-    case 'CHOOSE_PRODUCT':
-      return {
-        ...state,
-        chosenProduct: {
-          data: { ...action.product },
-          isFetching: false,
-          error: false,
-        },
-      };
-    case 'PRODUCT_NOT_FOUND':
-      return {
-        ...state,
-        chosenProduct: {
-          data: {},
-          isFetching: false,
-          error: true,
-        },
-      };
     case 'MODIFY_PRODUCT':
       return {
         ...state,

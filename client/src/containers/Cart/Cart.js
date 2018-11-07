@@ -38,7 +38,7 @@ const Cart = ({ cart, orderHandler, removeFromCartHandler }) => {
           ))}
         </List>
         <div className="cart-total">
-          <h2 className="cart-total__title">{`Total: ${cart.totalPrice}$`}</h2>
+          <h3 className="cart-total__title">{`Total: ${cart.totalPrice}$`}</h3>
           <button
             type="button"
             onClick={submitOrder}

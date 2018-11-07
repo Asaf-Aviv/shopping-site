@@ -15,7 +15,11 @@ const StickyCart = ({ cart, removeFromCartHandler }) => (
           {cart.products.map((item, i) => (
             <StickyCartItem
               key={`${item.product._id}${item.color}${item.size}`}
-              item={item}
+              image={item.product.image}
+              name={item.product.name}
+              color={item.color}
+              size={item.size}
+              quantity={item.quantity}
               removeProduct={() => removeFromCartHandler(i)}
             />
           ))}

@@ -5,6 +5,6 @@ import { fetchProductsByName, resetSearchBar } from '../../actions/searchBarActi
 const mapDispatchToProps = {
   fetchProductsByName,
   resetSearchBar,
-}
+};
 
 export default connect(null, mapDispatchToProps)(SearchBar);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Products from '../../containers/Products';
 import StickyCart from '../../containers/StickyCart';
-import FilterSearchBar from '../FilterSideBar';
+import FilterSearchBar from '../../containers/FilterSideBar';
 
 import './Store.sass';
 

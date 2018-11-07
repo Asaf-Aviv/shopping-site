@@ -296,7 +296,7 @@ module.exports = [
     sizes: [],
   },
   {
-    name: 'purse - P1',
+    name: 'Purse - P1',
     image: 'black-purse.jpeg',
     price: 69.99,
     discount: 30,
@@ -312,7 +312,7 @@ module.exports = [
     sizes: [],
   },
   {
-    name: 'purse - P2',
+    name: 'Purse - P2',
     image: 'blue-purse.jpeg',
     price: 49.99,
     discount: 10,
@@ -328,7 +328,7 @@ module.exports = [
     sizes: [],
   },
   {
-    name: 'purse - P3',
+    name: 'Purse - P3',
     image: 'pink-purse.jpeg',
     price: 39.99,
     discount: 10,

@@ -6,7 +6,6 @@ import {
   Redirect,
 } from 'react-router-dom';
 import NavBar from '../NavBar';
-import Product from '../../containers/Product';
 import PageNotFound from '../PageNotFound';
 
 import './App.sass';
@@ -46,7 +45,6 @@ const App = () => (
             </Suspense>
           )}
         />
-        <Route path="/store/product/:productId" component={Product} />
         <Route component={PageNotFound} />
       </Switch>
     </>

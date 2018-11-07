@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ProductPropTypes } from '../../PropTypes';
 import SizePicker from '../SizePicker';
@@ -86,13 +85,13 @@ class ProductCard extends Component {
     return (
       <li className="product">
         <div>
-          <Link
-            to={`/store/product/${_id}`}
-            className="product__link"
-            onClick={this.chooseProductHandler}
-          >
-            {name}
-          </Link>
+          <div className="product__header">
+            <span className="product__name">{name}</span>
+            <div className="rating__container">
+              <StarIcon style={{ height: 25, marginRight: 5 }} />
+              <span className="rating">{rating}</span>
+            </div>
+          </div>
           <div className="product__img">
             <ProductImage imgName={image} alt={type} />
           </div>
@@ -117,10 +116,6 @@ class ProductCard extends Component {
           chosenQuantity={chosenQuantity}
           chooseQuantityHandler={this.chooseQuantityHandler}
         />
-        <div className="rating__container">
-          <StarIcon style={{ height: '100%', marginRight: 5 }} />
-          <span className="rating">{rating}</span>
-        </div>
         <div className="add-to-cart">
           <p className="add-to-cart__error">{addToCarterror}</p>
           <Reviews

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { func } from 'prop-types';
 import { OrderItemPropTypes } from '../../PropTypes';
 import ProductImage from '../ProductImage';
@@ -16,14 +15,9 @@ const OrderItemSummary = ({ item, removeProduct }) => (
         alt={item.product.name}
       />
     </div>
-    <div className="order-item__link-wrapper">
-      <Link
-        to={`/store/product/${item.product._id}`}
-        className="order-item__link"
-      >
-        {item.product.name}
-      </Link>
-      <p>{item.product.description}</p>
+    <div className="order-item__wrapper">
+      <span className="order-item__name">{item.product.name}</span>
+      <p className="order-item__price">{item.product.description}</p>
     </div>
     <div className="order-item__details">
       <span className="details__item">{`Color: ${item.color}`}</span>

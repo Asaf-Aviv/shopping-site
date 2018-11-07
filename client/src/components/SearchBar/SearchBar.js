@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
-import SearchBarResults from '../SearchBarResults';
+import SearchBarResults from '../../containers/SearchBarResults';
 
 import './SearchBar.sass';
 
