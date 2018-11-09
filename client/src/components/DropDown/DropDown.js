@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import capitalize from 'lodash.capitalize';
 
 import './DropDown.sass';
 
-class DropDown extends Component {
+class DropDown extends PureComponent {
   static propTypes = {
     items: PropTypes.arrayOf(PropTypes.oneOfType([
       PropTypes.number, PropTypes.string,

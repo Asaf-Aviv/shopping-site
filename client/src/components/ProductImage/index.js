@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ProductImage from './ProductImage';
 
-export default ProductImage;
+export default memo(ProductImage);

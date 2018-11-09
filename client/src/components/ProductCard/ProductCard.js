@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ProductPropTypes } from '../../PropTypes';
 import SizePicker from '../SizePicker';
@@ -12,7 +12,7 @@ import StarIcon from '../../assets/svgs/star.svg';
 
 import './ProductCard.sass';
 
-class ProductCard extends Component {
+class ProductCard extends PureComponent {
   static propTypes = {
     product: ProductPropTypes.isRequired,
     chooseProduct: PropTypes.func.isRequired,

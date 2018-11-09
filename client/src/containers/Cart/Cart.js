@@ -3,17 +3,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { CartItemPropTypes } from '../../PropTypes';
 import OrderItemSummary from '../../components/OrderItemSummary';
-import List from '../../components/List';
 import Container from '../../components/Container';
 
 import './Cart.sass';
 
-const Cart = ({ cart, orderHandler, removeFromCartHandler }) => {
-  const submitOrder = () => {
-    orderHandler(cart.products);
-  };
+const Cart = ({
+  products, totalPrice, orderHandler, removeFromCartHandler,
+}) => {
+  const submitOrder = () => orderHandler(products);
 
-  if (!cart.products.length) {
+  if (!products.length) {
     return (
       <main>
         <Container>
@@ -28,17 +27,18 @@ const Cart = ({ cart, orderHandler, removeFromCartHandler }) => {
     <main>
       <Container>
         <h1 className="weight-300">My Cart</h1>
-        <List classes="border-radius shadow">
-          {cart.products.map((item, i) => (
+        <ul className="border-radius shadow">
+          {products.map((item, i) => (
             <OrderItemSummary
-              key={`${item._id}${item.color}${item.size}`}
+              key={`${item.product._id}${item.color}${item.size}`}
               item={item}
-              removeProduct={() => removeFromCartHandler(i)}
+              productIndex={i}
+              removeProduct={removeFromCartHandler}
             />
           ))}
-        </List>
+        </ul>
         <div className="cart-total">
-          <h3 className="cart-total__title">{`Total: ${cart.totalPrice}$`}</h3>
+          <h3 className="cart-total__title">{`Total: ${totalPrice}$`}</h3>
           <button
             type="button"
             onClick={submitOrder}
@@ -53,10 +53,8 @@ const Cart = ({ cart, orderHandler, removeFromCartHandler }) => {
 };
 
 Cart.propTypes = {
-  cart: PropTypes.shape({
-    products: PropTypes.arrayOf(CartItemPropTypes),
-    totalPrice: PropTypes.number,
-  }).isRequired,
+  products: PropTypes.arrayOf(CartItemPropTypes).isRequired,
+  totalPrice: PropTypes.number.isRequired,
   orderHandler: PropTypes.func.isRequired,
   removeFromCartHandler: PropTypes.func.isRequired,
 };

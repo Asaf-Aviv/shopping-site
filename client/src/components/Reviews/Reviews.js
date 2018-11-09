@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { ReviewPropTypes } from '../../PropTypes';
 import ReviewForm from '../ReviewForm';
@@ -6,7 +6,7 @@ import Review from '../Review';
 
 import './Reviews.sass';
 
-class Reviews extends Component {
+class Reviews extends PureComponent {
   static propTypes = {
     reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
     productId: PropTypes.string.isRequired,

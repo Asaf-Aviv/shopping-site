@@ -4,7 +4,8 @@ import { orderHandler } from '../../actions/orderActions';
 import { removeFromCartHandler } from '../../actions/cartActions';
 
 const mapStateToProps = state => ({
-  cart: state.cart,
+  products: state.cart.products,
+  totalPrice: state.cart.totalPrice,
 });
 
 const mapDispatchToProps = {

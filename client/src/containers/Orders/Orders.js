@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { arrayOf } from 'prop-types';
 import { OrderPropTypes } from '../../PropTypes';
-import List from '../../components/List';
 import OrderHeader from '../../components/OrderHeader';
 import OrderItemSummary from '../../components/OrderItemSummary';
 import Container from '../../components/Container';
@@ -30,11 +29,11 @@ const Orders = ({ orders }) => {
               timestamp={order.timestamp}
               totalPrice={order.totalPrice}
             />
-            <List>
+            <ul>
               {order.items.map(item => (
                 <OrderItemSummary key={item.product._id} item={item} />
               ))}
-            </List>
+            </ul>
           </div>
         ))}
       </Container>

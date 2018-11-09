@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 import NavBar from '../NavBar';
 import PageNotFound from '../PageNotFound';
 
@@ -51,4 +52,4 @@ const App = () => (
   </Router>
 );
 
-export default App;
+export default hot(module)(App);

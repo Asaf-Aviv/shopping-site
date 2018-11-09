@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import StickyCartItem from './StickyCartItem';
 
-export default StickyCartItem;
+export default memo(StickyCartItem);
