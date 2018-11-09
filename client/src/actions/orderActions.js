@@ -20,13 +20,11 @@ export const orderHandler = products => (dispatch) => {
 
   return axios
     .post('/api/store/orders', { products })
-    .then(
-      ({ data: order }) => {
-        dispatch(orderReceived(order));
-        dispatch(resetCart());
-      },
-      () => dispatch(orderError()),
-    );
+    .then(({ data: order }) => {
+      dispatch(orderReceived(order));
+      dispatch(resetCart());
+    })
+    .catch(() => dispatch(orderError()));
 };
 
 export const z = '';

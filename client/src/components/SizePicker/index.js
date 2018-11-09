@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import SizePicker from './SizePicker';
 
-export default SizePicker;
+export default memo(SizePicker);

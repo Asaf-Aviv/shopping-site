@@ -1,5 +1,5 @@
 import React from 'react';
-import { func } from 'prop-types';
+import PropTypes from 'prop-types';
 import { OrderItemPropTypes } from '../../PropTypes';
 import ProductImage from '../ProductImage';
 import IconButton from '../IconButton';
@@ -7,7 +7,7 @@ import CloseIcon from '../../assets/svgs/cross-out.svg';
 
 import './OrderItemSummary.sass';
 
-const OrderItemSummary = ({ item, removeProduct }) => (
+const OrderItemSummary = ({ item, removeProduct, productIndex }) => (
   <li className="order-item">
     <div className="order-item__img">
       <ProductImage
@@ -24,10 +24,10 @@ const OrderItemSummary = ({ item, removeProduct }) => (
       <span className="details__item">{`Size: ${item.size}`}</span>
       <span className="details__item">{`Quantity: ${item.quantity}`}</span>
     </div>
-    <h4>{`Total: ${item.product.price * item.quantity}$`}</h4>
+    <h4>{`Total: ${(item.product.price * item.quantity).toFixed(2)}$`}</h4>
     {removeProduct && (
       <IconButton
-        onClick={removeProduct}
+        onClick={() => removeProduct(productIndex)}
         classes="remove-btn"
         width={30}
         height={30}
@@ -40,11 +40,13 @@ const OrderItemSummary = ({ item, removeProduct }) => (
 
 OrderItemSummary.propTypes = {
   item: OrderItemPropTypes.isRequired,
-  removeProduct: func,
+  productIndex: PropTypes.number,
+  removeProduct: PropTypes.func,
 };
 
 OrderItemSummary.defaultProps = {
   removeProduct: null,
+  productIndex: null,
 };
 
 export default OrderItemSummary;

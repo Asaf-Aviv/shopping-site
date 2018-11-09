@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StickyCartHeader from '../../components/StickyCartHeader/StickyCartHeader';
-import StickyCartItem from '../../components/StickyCartItem/StickyCartItem';
-import List from '../../components/List/List';
+import StickyCartHeader from '../../components/StickyCartHeader';
+import StickyCartItem from '../../components/StickyCartItem';
 
 import './StickyCart.sass';
 
-const StickyCart = ({ cart, removeFromCartHandler }) => (
+const StickyCart = ({ products, removeFromCartHandler }) => (
   <div className="sticky-cart">
-    <StickyCartHeader totalPrice={cart.totalPrice} />
-    {cart.products.length
+    <StickyCartHeader />
+    {products.length
       ? (
-        <List classes="sticky-cart__list">
-          {cart.products.map((item, i) => (
+        <ul classes="sticky-cart__list">
+          {products.map((item, i) => (
             <StickyCartItem
               key={`${item.product._id}${item.color}${item.size}`}
               image={item.product.image}
@@ -23,7 +22,7 @@ const StickyCart = ({ cart, removeFromCartHandler }) => (
               removeProduct={() => removeFromCartHandler(i)}
             />
           ))}
-        </List>
+        </ul>
       )
       : <h2 className="sticky-cart__empty">Your cart is empty :(</h2>
     }
@@ -31,7 +30,7 @@ const StickyCart = ({ cart, removeFromCartHandler }) => (
 );
 
 StickyCart.propTypes = {
-  cart: PropTypes.shape({}).isRequired,
+  products: PropTypes.shape({}).isRequired,
   removeFromCartHandler: PropTypes.func.isRequired,
 };
 

@@ -53,7 +53,6 @@ class Products extends Component {
     return (
       <div className="products__list-container">
         <ul className="products__list">
-          {isFetching && <h3>Fetching...</h3>}
           {error && <h3>Products not found</h3>}
           {productsList.map(product => (
             <ProductCard

@@ -2,7 +2,7 @@ exports.fakeProduct1 = {
   name: 'Hat - H1',
   image: 'hat.jpg',
   price: 9.99,
-  gender: 'Male',
+  gender: 'male',
   discount: 0,
   type: 'Hat',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
@@ -17,7 +17,7 @@ exports.fakeProduct2 = {
   price: 24.99,
   discount: 20,
   type: 'pants',
-  gender: 'Female',
+  gender: 'female',
   image: 'pants.jpg',
   description: 'Lorem adipisicing elit. Laudantium, sint.',
   colors: [

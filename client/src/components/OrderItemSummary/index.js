@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import OrderItemSummary from './OrderItemSummary';
 
-export default OrderItemSummary;
+export default memo(OrderItemSummary);

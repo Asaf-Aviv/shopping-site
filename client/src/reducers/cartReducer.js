@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
     case 'UPDATE_CART_TOTAL':
       return {
         ...state,
-        totalPrice: +state.products
+        totalPrice: state.products
           .reduce(
             (total, cartItem) => total + cartItem.product.price * cartItem.quantity, 0,
           ).toFixed(2),

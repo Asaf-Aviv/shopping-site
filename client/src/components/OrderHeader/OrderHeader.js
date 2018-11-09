@@ -10,7 +10,7 @@ const OrderHeader = ({ orderId, timestamp, totalPrice }) => (
     <span className="header__items">
       {`Ordered on: ${format(timestamp, 'DD/MM/YYYY')}`}
     </span>
-    <span className="header__items">{`Total Price: ${totalPrice}$`}</span>
+    <h4 className="header__items">{`Total Price: ${totalPrice}$`}</h4>
   </header>
 );
 

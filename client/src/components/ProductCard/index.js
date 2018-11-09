@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { connect } from 'react-redux';
 import ProductCard from './ProductCard';
 import { addToCartHandler } from '../../actions/cartActions';
@@ -9,4 +8,4 @@ const mapDispatchToProps = {
   addToCartHandler,
 };
 
-export default memo(connect(null, mapDispatchToProps)(ProductCard));
+export default connect(null, mapDispatchToProps)(ProductCard);

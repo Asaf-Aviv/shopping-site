@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { connect } from 'react-redux';
 import SearchBarResults from './SearchBarResults';
 
@@ -7,4 +8,4 @@ const mapStateToProps = state => ({
   error: state.searchBar.error,
 });
 
-export default connect(mapStateToProps)(SearchBarResults);
+export default memo(connect(mapStateToProps)(SearchBarResults));
