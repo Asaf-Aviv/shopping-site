@@ -48,6 +48,14 @@ class ProductCard extends PureComponent {
     }));
   }
 
+  toggleReviews = (e) => {
+    if (e.key === 'Enter' || !e.key) {
+      this.setState(prevState => ({
+        showingReviews: !prevState.showingReviews,
+      }));
+    }
+  }
+
   addToCart = () => {
     const { product, addToCartHandler } = this.props;
     const { chosenColor, chosenSize, chosenQuantity } = this.state;
@@ -118,11 +126,21 @@ class ProductCard extends PureComponent {
         />
         <div className="add-to-cart">
           <p className="add-to-cart__error">{addToCarterror}</p>
-          <Reviews
-            reviews={reviews}
-            isOpen={showingReviews}
-            productId={_id}
-          />
+          <button
+            type="button"
+            className="btn btn--secondary"
+            onClick={this.toggleReviews}
+            onKeyPress={this.toggleReviews}
+          >
+            Reviews
+          </button>
+          {showingReviews && (
+            <Reviews
+              reviews={reviews}
+              productId={_id}
+              toggleReviews={this.toggleReviews}
+            />
+          )}
           <button
             type="button"
             className="btn btn--primary"
