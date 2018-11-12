@@ -1,5 +1,9 @@
 import { connect } from 'react-redux';
 import ReviewForm from './ReviewForm';
-import { modifyProduct } from '../../actions/productActions';
+import { sendReview } from '../../actions/reviewActions';
 
-export default connect(null, { modifyProduct })(ReviewForm);
+const mapStateToProps = state => ({
+  processing: state.reviews.form.processing,
+});
+
+export default connect(mapStateToProps, { sendReview })(ReviewForm);

@@ -16,16 +16,16 @@ const IconButton = ({
 
 IconButton.propTypes = {
   classes: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number,
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
 IconButton.defaultProps = {
   classes: null,
-  width: 80,
-  height: 40,
+  height: 'auto',
+  width: 'auto',
 };
 
 export default IconButton;
