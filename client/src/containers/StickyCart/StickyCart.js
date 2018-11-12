@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CartItemPropTypes } from '../../PropTypes';
 import StickyCartHeader from '../../components/StickyCartHeader';
 import StickyCartItem from '../../components/StickyCartItem';
 
@@ -30,7 +31,7 @@ const StickyCart = ({ products, removeFromCartHandler }) => (
 );
 
 StickyCart.propTypes = {
-  products: PropTypes.shape({}).isRequired,
+  products: PropTypes.arrayOf(CartItemPropTypes).isRequired,
   removeFromCartHandler: PropTypes.func.isRequired,
 };
 
