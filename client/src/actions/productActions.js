@@ -44,7 +44,6 @@ export const chooseProduct = product => ({
   product,
 });
 
-
 export const fetchProduct = productId => (dispatch) => {
   dispatch(requestProduct());
 
@@ -56,4 +55,10 @@ export const fetchProduct = productId => (dispatch) => {
 export const modifyProduct = updatedProduct => ({
   type: types.MODIFY_PRODUCT,
   updatedProduct,
+});
+
+export const removeReview = (productId, reviewId) => ({
+  type: types.REMOVE_REVIEW,
+  productId,
+  reviewId,
 });
