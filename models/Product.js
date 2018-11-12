@@ -21,7 +21,7 @@ const productSchema = new mongoose.Schema({
   reviews: [
     {
       name: { type: String, required: true },
-      body: { type: String, required: true, minlength: 4 },
+      body: { type: String, required: true },
       rating: { type: Number, required: true },
       timestamp: { type: Number, default: +new Date() },
     },
@@ -63,8 +63,11 @@ productSchema.statics.addReview = async function (_id, review) {
   return doc.save();
 };
 
-productSchema.statics.deleteReview = function (reviewId) {
-  return this.updateOne({ 'reviews._id': reviewId }, { $pull: { reviews: { reviewId } } });
+productSchema.statics.deleteReview = function (productId, reviewId) {
+  return this.updateOne(
+    { _id: productId },
+    { $pull: { reviews: { _id: reviewId } } },
+  );
 };
 
 const Product = mongoose.model('products', productSchema);
