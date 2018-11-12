@@ -90,7 +90,6 @@ exports.updateProductQuantity = async (req, res, next) => {
 exports.addReview = async (req, res, next) => {
   try {
     const { productId, review } = req.body;
-    console.log(productId, review);
     const result = await Product.addReview(productId, review);
     res.send(result);
   } catch (error) {
@@ -100,16 +99,19 @@ exports.addReview = async (req, res, next) => {
 
 exports.deleteReview = async (req, res, next) => {
   try {
-    const { reviewId } = req.body;
-    const result = await Product.deleteReview(reviewId);
+    const { productId, reviewId } = req.body;
+    const result = await Product.deleteReview(productId, reviewId);
+
     if (!result.n) {
       res.status(404).json({ message: 'Review not found!' });
       return;
     }
+
     if (!result.nModified || !result.ok) {
       next();
       return;
     }
+
     res.send();
     return;
   } catch (error) {
