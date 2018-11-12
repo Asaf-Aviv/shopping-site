@@ -7,13 +7,13 @@ import {
 } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import NavBar from '../NavBar';
-import PageNotFound from '../PageNotFound';
+import Cart from '../../containers/Cart';
+import Orders from '../../containers/Orders';
+import ErrorBoundary from '../ErrorBoundary';
 
 import './App.sass';
 
 const Store = lazy(() => import('../Store'));
-const Cart = lazy(() => import('../../containers/Cart'));
-const Orders = lazy(() => import('../../containers/Orders'));
 
 const App = () => (
   <Router>
@@ -26,27 +26,29 @@ const App = () => (
           path="/store"
           render={() => (
             <Suspense fallback={null}>
-              <Store />
+              <ErrorBoundary>
+                <Store />
+              </ErrorBoundary>
             </Suspense>
           )}
         />
         <Route
           path="/cart"
           render={() => (
-            <Suspense fallback={null}>
+            <ErrorBoundary>
               <Cart />
-            </Suspense>
+            </ErrorBoundary>
           )}
         />
         <Route
           path="/orders"
           render={() => (
-            <Suspense fallback={null}>
+            <ErrorBoundary>
               <Orders />
-            </Suspense>
+            </ErrorBoundary>
           )}
         />
-        <Route component={PageNotFound} />
+        <Route component={() => <Redirect to="/store" />} />
       </Switch>
     </>
   </Router>
