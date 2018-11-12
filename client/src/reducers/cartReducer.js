@@ -40,10 +40,10 @@ export default (state = initialState, action) => {
     case 'UPDATE_CART_TOTAL':
       return {
         ...state,
-        totalPrice: state.products
+        totalPrice: Number(state.products
           .reduce(
             (total, cartItem) => total + cartItem.product.price * cartItem.quantity, 0,
-          ).toFixed(2),
+          ).toFixed(2)),
       };
     case 'RESET_CART':
       return initialState;

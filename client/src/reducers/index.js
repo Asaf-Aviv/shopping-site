@@ -5,6 +5,7 @@ import ordersReducer from './ordersReducer';
 import searchBarReducer from './searchBarReducer';
 import filtersReducer from './filtersReducer';
 import queryReducer from './queryReducer';
+import reviewReducer from './reviewReducer';
 
 export default combineReducers({
   store: productReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   searchBar: searchBarReducer,
   filters: filtersReducer,
   query: queryReducer,
+  reviews: reviewReducer,
 });
