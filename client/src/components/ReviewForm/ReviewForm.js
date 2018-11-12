@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import LoadingIndicator from '../LoadingIndicator';
 
 import './ReviewForm.sass';
@@ -8,30 +7,31 @@ import './ReviewForm.sass';
 class ReviewForm extends Component {
   static propTypes = {
     productId: PropTypes.string.isRequired,
-    modifyProduct: PropTypes.func.isRequired,
+    sendReview: PropTypes.func.isRequired,
+    processing: PropTypes.bool.isRequired,
   }
 
   state = {
     name: '',
     body: '',
-    rating: 0,
-    processing: false,
+    rating: 1,
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, body, rating } = this.state;
-    const { modifyProduct, productId } = this.props;
+    const { sendReview, productId } = this.props;
 
     const review = {
       name, body, rating,
     };
 
-    axios.post('/api/store/product/reviews', { productId, review })
-      .then(
-        ({ data: updatedDoc }) => modifyProduct(updatedDoc),
-        err => console.log('something went wrong', err),
-      );
+    sendReview(productId, review);
+    this.setState({
+      name: '',
+      body: '',
+      rating: 1,
+    });
   }
 
   onChange = (key, inputValue) => {
@@ -43,7 +43,8 @@ class ReviewForm extends Component {
   }
 
   render() {
-    const { name, body, processing } = this.state;
+    const { name, body, rating } = this.state;
+    const { processing } = this.props;
 
     return (
       <div className="add-review">
@@ -56,6 +57,7 @@ class ReviewForm extends Component {
             onChange={e => this.onChange('name', e.target.value)}
             value={name}
             placeholder="Name"
+            required
           />
           <textarea
             className="add-review__textarea"
@@ -64,9 +66,20 @@ class ReviewForm extends Component {
             value={body}
             placeholder="Review"
             rows="4"
+            required
           />
-          {/* eslint-disable-next-line */}
-          {[...Array(5)].map((_, i) => <button type="button" key={i} onClick={this.chooseRating}>{i + 1}</button>)}
+          <div className="add-review__rating">
+            {[...Array(5)].map((_, i) => (
+              <button
+                className={`add-review__btn ${rating === i + 1 ? 'add-review__btn--active' : ''}`}
+                type="button"
+                key={i} // eslint-disable-line
+                onClick={this.chooseRating}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
           <button className="add-review__submit" type="submit">Send</button>
         </form>
       </div>
