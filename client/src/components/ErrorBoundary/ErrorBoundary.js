@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class ErrorBoundary extends Component {
@@ -7,7 +7,11 @@ class ErrorBoundary extends Component {
       PropTypes.node,
       PropTypes.arrayOf(PropTypes.node),
     ]).isRequired,
-    render: PropTypes.func.isRequired,
+    render: PropTypes.func,
+  }
+
+  static defaultProps = {
+    render: () => <h6>Something went wrong</h6>,
   }
 
   state = {
