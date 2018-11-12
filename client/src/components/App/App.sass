@@ -37,6 +37,10 @@ button
   width: 100px
 
 .remove-btn
+  @media (max-width: 699px)
+    position: absolute
+    top: 15px
+    right: 15px
   outline: 0
   border: 0
   margin-left: 10px
@@ -57,10 +61,14 @@ button
   padding: 0 20px
   color: #FFF
   transition: background 200ms, box-shadow 150ms
-  box-shadow: 0px 3px 5px #7f7f7f
+  box-shadow: 0px 5px 15px -5px #c2c2c2
   text-decoration: none
   &:hover
-    box-shadow: 0px 5px 15px #7f7f7f
+    box-shadow: 0px 5px 15px -1px #c2c2c2
+  &--default
+    background: #FFF
+    color: #000
+    border: 1px solid #e3e3e3
   &--primary
     background: $purple
     &:hover
@@ -75,7 +83,7 @@ button
       background: #ff0000
 
 .shadow
-  box-shadow: 0 5px 15px #cecbcb
+  box-shadow: 0 5px 15px #c2c2c2
 
 .border-radius
   border-radius: 8px

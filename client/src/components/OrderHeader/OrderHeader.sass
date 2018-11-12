@@ -1,10 +1,19 @@
 @import '../App/variables.sass'
 
 .order__header
-  padding: 15px
   display: flex
+  padding: 15px
+  align-items: center
+  justify-content: center
+  flex-direction: column
   border-bottom: 1px solid $purple
   .header__items
-    flex: 1
-    &:last-of-type
-      flex: 0.6
+    &:not(first-child)
+      margin-top: 5px
+
+@media (min-width: 650px)
+  .order__header
+    flex-direction: row
+    justify-content: space-between
+    .header__items:not(first-child)
+      margin-top: 0

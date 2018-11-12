@@ -1,12 +1,15 @@
 @import '../App/variables.sass'
 
 .review
+  position: relative
   padding: 15px
   box-shadow: 0 5px 20px -2px #c6c6c6
   min-height: 150px
   margin: 0 auto 30px
   width: 100%
   max-width: 500px
+  display: flex
+  flex-direction: column
   &__info
     display: flex
     align-items: flex-end
@@ -28,3 +31,6 @@
     align-items: flex-end
     > span
       font-weight: 700
+  &__delete
+    align-self: flex-end
+    margin-top: auto
