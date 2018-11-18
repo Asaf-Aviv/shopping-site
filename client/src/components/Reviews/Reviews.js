@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { ReviewPropTypes } from '../../PropTypes';
 import ReviewForm from '../ReviewForm';
 import Review from '../Review';
+import LoadingIndicator from '../LoadingIndicator';
 
 import './Reviews.sass';
 
-const Reviews = ({ reviews, productId, toggleReviews }) => (
+const Reviews = ({
+  reviews, productId, toggleReviews, processing,
+}) => (
   <div
     className="reviews__container reviews__container--open"
     onClick={toggleReviews}
@@ -21,6 +24,7 @@ const Reviews = ({ reviews, productId, toggleReviews }) => (
       {reviews.length > 0
         && (
           <ul className="reviews__list">
+            {processing && <LoadingIndicator />}
             {reviews.map(review => (
               <Review
                 key={review.name + review.timestamp}
@@ -39,6 +43,7 @@ Reviews.propTypes = {
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
   productId: PropTypes.string.isRequired,
   toggleReviews: PropTypes.func.isRequired,
+  processing: PropTypes.bool.isRequired,
 };
 
 export default Reviews;

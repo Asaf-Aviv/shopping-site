@@ -6,14 +6,12 @@ import { ReviewPropTypes } from '../../PropTypes';
 import ConfirmModal from '../ConfirmModal';
 
 import './Review.sass';
-import LoadingIndicator from '../LoadingIndicator';
 
 class Review extends Component {
   static propTypes = {
     deleteReview: PropTypes.func.isRequired,
     review: ReviewPropTypes.isRequired,
     productId: PropTypes.string.isRequired,
-    processing: PropTypes.bool.isRequired,
   }
 
   state = {
@@ -38,11 +36,10 @@ class Review extends Component {
 
   render() {
     const { showModal } = this.state;
-    const { review, processing } = this.props;
+    const { review } = this.props;
 
     return (
       <li className="review">
-        {processing && <LoadingIndicator transparent />}
         <div className="review__info">
           <h3 className="review__name">{review.name}</h3>
           <div className="review__rating">

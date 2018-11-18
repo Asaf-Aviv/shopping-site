@@ -7,7 +7,6 @@ import QuantityPicker from '../QuantityPicker';
 import Reviews from '../Reviews';
 import ProductImage from '../ProductImage';
 import { calculatePrice } from '../../utils';
-
 import StarIcon from '../../assets/svgs/star.svg';
 
 import './ProductCard.sass';

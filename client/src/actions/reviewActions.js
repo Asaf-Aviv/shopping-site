@@ -14,18 +14,6 @@ const reviewError = () => ({
   type: types.REVIEW_ERROR,
 });
 
-const deleteRequest = () => ({
-  type: types.DELETE_REQUEST,
-});
-
-const deleteSuccess = () => ({
-  type: types.DELETE_SUCCESS,
-});
-
-const deleteError = () => ({
-  type: types.DELETE_ERROR,
-});
-
 export const sendReview = (productId, review) => (dispatch) => {
   dispatch(processReview());
 
@@ -40,6 +28,18 @@ export const sendReview = (productId, review) => (dispatch) => {
     });
 };
 
+const deleteRequest = () => ({
+  type: types.DELETE_REQUEST,
+});
+
+const deleteSuccess = () => ({
+  type: types.DELETE_SUCCESS,
+});
+
+const deleteError = () => ({
+  type: types.DELETE_ERROR,
+});
+
 export const deleteReview = (productId, reviewId) => (dispatch) => {
   dispatch(deleteRequest());
 
@@ -48,5 +48,5 @@ export const deleteReview = (productId, reviewId) => (dispatch) => {
       dispatch(deleteSuccess());
       dispatch(removeReview(productId, reviewId));
     })
-    .catch(err => console.log(err), dispatch(deleteError()));
+    .catch(() => dispatch(deleteError()));
 };

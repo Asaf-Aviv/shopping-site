@@ -30,8 +30,8 @@ class ConfirmModal extends Component {
     const { danger, text } = this.props;
 
     return createPortal(
-      <div className={`modal ${danger ? 'modal--danger' : ''}`}>
-        <div className="modal__info">
+      <div className={`modal ${danger ? 'modal--danger' : ''}`} onClick={this.onDecline} role="presentation">
+        <div className="modal__info" onClick={e => e.stopPropagation()} role="presentation">
           <h4 className="modal__title">{text}</h4>
           <div className="modal__btn-group">
             <button

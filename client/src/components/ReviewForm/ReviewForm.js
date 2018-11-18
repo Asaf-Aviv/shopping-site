@@ -80,7 +80,7 @@ class ReviewForm extends Component {
               </button>
             ))}
           </div>
-          <button className="add-review__submit" type="submit">Send</button>
+          <button className="add-review__submit" type="submit" disabled={processing}>Send</button>
         </form>
       </div>
     );

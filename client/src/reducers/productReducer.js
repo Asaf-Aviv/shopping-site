@@ -7,28 +7,33 @@ const initialState = {
   },
 };
 
+const mergeProducts = (products, productIndex, updatedProduct) => [
+  ...products.slice(0, productIndex),
+  updatedProduct,
+  ...products.slice(productIndex + 1),
+];
+
 const replaceProduct = (products, updatedProduct) => {
   const productIndex = products.findIndex(product => product._id === updatedProduct._id);
-  if (productIndex === -1) return products;
-
-  return [
-    ...products.slice(0, productIndex),
-    updatedProduct,
-    ...products.slice(productIndex + 1),
-  ];
+  return productIndex === -1
+    ? products
+    : mergeProducts(products, productIndex, updatedProduct);
 };
 
 const removeReview = (products, productId, reviewId) => {
   const productIndex = products.findIndex(product => product._id === productId);
   if (productIndex === -1) return products;
 
-  const productObj = products[productIndex];
+  const updatedProduct = {
+    ...products[productIndex],
+    reviews: products[productIndex].reviews
+      .filter(review => review._id !== reviewId),
+  };
 
-  return [
-    ...products.slice(0, productIndex),
-    { ...productObj, reviews: productObj.reviews.filter(review => review._id !== reviewId) },
-    ...products.slice(productIndex + 1),
-  ];
+  updatedProduct.rating = updatedProduct.reviews
+    .reduce((sum, review) => sum + review.rating, 0) / updatedProduct.reviews.length || 0;
+
+  return mergeProducts(products, productIndex, updatedProduct);
 };
 
 export default (state = initialState, action) => {
