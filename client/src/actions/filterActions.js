@@ -25,3 +25,7 @@ export const updateFiltersAndProducts = (group, filter) => (dispatch) => {
   dispatch(resetProducts());
   dispatch(fetchProducts());
 };
+
+export const toggleFilterSidebBar = () => ({
+  type: types.TOGGLE_FILTERS_SIDEBAR,
+});

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FilterSearchBar from './FilterSearchBar';
+import FilterSideBar from './FilterSideBar';
 import { updateFiltersAndProducts, resetFiltersAndFetchProducts } from '../../actions/filterActions';
 
 const mapStateToProps = state => ({
@@ -11,4 +11,4 @@ const mapDispatchToProps = {
   resetFiltersAndFetchProducts,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilterSearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterSideBar);

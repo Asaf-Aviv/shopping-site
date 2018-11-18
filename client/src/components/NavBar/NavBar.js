@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SearchBar from '../SearchBar';
 import IconButton from '../IconButton';
 import MenuIcon from '../../assets/svgs/menu.svg';
+import FilterIcon from '../../assets/svgs/filter.svg';
 
 import './NavBar.sass';
 
@@ -11,6 +12,7 @@ class NavBar extends Component {
   static propTypes = {
     numOfCartItems: PropTypes.number.isRequired,
     numOfOrders: PropTypes.number.isRequired,
+    toggleFilterSidebBar: PropTypes.func.isRequired,
   }
 
   state = {
@@ -30,18 +32,24 @@ class NavBar extends Component {
 
   shouldCollapse = (e) => {
     if (e.target.classList.contains('nav__link')) {
-      this.toggleNav()();
+      const { isOpen } = this.state;
+      if (isOpen) {
+        this.setState({ isOpen: false });
+      }
     }
   }
 
   render() {
-    const { numOfCartItems, numOfOrders } = this.props;
+    const { numOfCartItems, numOfOrders, toggleFilterSidebBar } = this.props;
     const { isOpen } = this.state;
 
     return (
       <nav className="nav">
         <IconButton onClick={this.toggleNav()} classes="nav__toggler">
           <MenuIcon />
+        </IconButton>
+        <IconButton onClick={toggleFilterSidebBar} classes="nav__toggler">
+          <FilterIcon style={{ width: 28 }} />
         </IconButton>
         <div className={`nav__responsive ${isOpen ? 'nav__responsive--open' : ''}`}>
           <ul className="nav__menu" onClick={this.shouldCollapse} role="presentation">
