@@ -19,25 +19,31 @@ class NavBar extends Component {
     isOpen: false,
   }
 
-  toggleNav = () => {
+  toggleNav = (() => {
     const body = document.querySelector('body');
 
     return () => {
+      console.log('running');
       this.setState((prevState) => {
         body.style.overflowY = prevState.isOpen ? 'visible' : 'hidden';
         return { isOpen: !prevState.isOpen };
       });
     };
-  }
+  })();
 
-  shouldCollapse = (e) => {
-    if (e.target.classList.contains('nav__link')) {
-      const { isOpen } = this.state;
-      if (isOpen) {
-        this.setState({ isOpen: false });
+  shouldCollapse = (() => {
+    const body = document.querySelector('body');
+
+    return (e) => {
+      if (e.target.classList.contains('nav__link')) {
+        const { isOpen } = this.state;
+        if (isOpen) {
+          this.setState({ isOpen: false });
+          body.style.overflowY = 'visible';
+        }
       }
-    }
-  }
+    };
+  })();
 
   render() {
     const { numOfCartItems, numOfOrders, toggleFilterSidebBar } = this.props;
@@ -45,7 +51,7 @@ class NavBar extends Component {
 
     return (
       <nav className="nav">
-        <IconButton onClick={this.toggleNav()} classes="nav__toggler">
+        <IconButton onClick={this.toggleNav} classes="nav__toggler">
           <MenuIcon />
         </IconButton>
         <IconButton onClick={toggleFilterSidebBar} classes="nav__toggler">
@@ -85,7 +91,7 @@ class NavBar extends Component {
               </NavLink>
             </li>
           </ul>
-          <div className="nav__transparent" onClick={this.toggleNav()} /> {/* eslint-disable-line */}
+          <div className="nav__transparent" onClick={this.toggleNav} /> {/* eslint-disable-line */}
         </div>
         <SearchBar />
       </nav>

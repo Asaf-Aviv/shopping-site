@@ -62,7 +62,7 @@ class Products extends Component {
           ))}
         </ul>
         <div className="loading-trigger">
-          {isFetching && <LoadingIndicator transparent />}
+          {isFetching && <LoadingIndicator transparent size={70} />}
           {isLastPage && <h1>No more products</h1>}
         </div>
       </div>
