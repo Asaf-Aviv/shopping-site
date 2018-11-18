@@ -1,4 +1,5 @@
 const initialState = {
+  isOpen: false,
   gender: {
     male: false,
     female: false,
@@ -49,7 +50,15 @@ export default (state = initialState, { type, group, filter }) => {
         },
       };
     case 'RESET_FILTERS':
-      return initialState;
+      return {
+        ...initialState,
+        isOpen: state.isOpen,
+      };
+    case 'TOGGLE_FILTERS_SIDEBAR':
+      return {
+        ...state,
+        isOpen: !state.isOpen,
+      };
     default:
       return state;
   }
