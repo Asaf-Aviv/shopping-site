@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import throttle from 'lodash.throttle';
 import Products from '../../containers/Products';
 import StickyCart from '../../containers/StickyCart';
-import FilterSearchBar from '../../containers/FilterSideBar';
+import FilterSideBar from '../../containers/FilterSideBar';
 import ErrorBoundary from '../ErrorBoundary';
 
 import './Store.sass';
@@ -15,7 +15,7 @@ class Store extends Component {
       width: null,
     };
 
-    this.handleResize = throttle(this.handleResize.bind(this), 200);
+    this.handleResize = throttle(this.handleResize.bind(this), 300);
   }
 
   setWidth = () => this.setState({ width: window.innerWidth });
@@ -39,7 +39,7 @@ class Store extends Component {
     return (
       <main className="store">
         <ErrorBoundary>
-          <FilterSearchBar />
+          <FilterSideBar />
         </ErrorBoundary>
         <ErrorBoundary>
           <Products />
