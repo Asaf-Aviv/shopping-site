@@ -7,35 +7,35 @@
   position: relative
   &__title
     margin-bottom: 10px
-    text-shadow: 1px 1px #d8d3d3
+    text-shadow: 1px 1px #d8d3d3s
   &__form
     display: flex
     flex-direction: column
   &__input, &__textarea
     margin-bottom: 10px
     padding: 5px 10px
-    border: 1px solid #eee
-    box-shadow: 0 3px 5px #cfcfcf
+    border: none
+    box-shadow: 0 3px 5px $shadow-color
   &__rating
     display: flex
     margin-bottom: 10px
   &__btn
     flex: 1
     padding: 10px 0
-    background: #eee
+    background: $light-grey
     border: none
     transition: background 200ms, color 200ms
     &--active, &:hover
       background: $purple
-      color: #FFF
+      color: $white
   &__submit
     cursor: pointer
     user-select: none
     background: $purple
     border: 0
     padding: 10px 20px
-    color: #FFF
-    box-shadow: 0px 5px 15px #cbcbcb
+    color: $white
+    box-shadow: 0px 5px 15px $shadow-color
     transition: background 200ms
     &:hover
       background: $light-purple

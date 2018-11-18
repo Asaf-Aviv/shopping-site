@@ -2,16 +2,18 @@
 
 .filters
   position: sticky
+  background: $white
   top: 100px
-  min-width: 150px
-  padding-left: 20px
-  margin-right: 20px
+  min-width: 140px
+  padding-left: 10px
   border-top-right-radius: 8px
   padding: 15px 0 0 20px
-  box-shadow: 0 3px 20px #cdc6c6
+  box-shadow: 0 3px 20px $shadow-color
   height: calc(100vh - 100px)
   overflow-y: scroll
   overflow-scrolling: touch
+  z-index: 40
+  transition: transform 200ms
   &__reset
     background: none
     color: $purple
@@ -23,3 +25,10 @@
     margin-bottom: 10px
   &__group
     margin-bottom: 20px
+
+@media (max-width: 767px)
+  .filters
+    position: fixed
+    transform: translateX(-100%)
+    &--open
+      transform: translateX(0)

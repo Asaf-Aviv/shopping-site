@@ -12,6 +12,7 @@ body
   font-family: Lato, sans-serif
   padding-top: 100px
   color: $black
+  background: $white
   overflow-x: hidden
 
 button
@@ -46,29 +47,29 @@ button
   margin-left: 10px
   transition: background 150ms, box-shadow 150ms
   border-radius: 3px
-  background: #cf0808
-  box-shadow: 0 1px 3px #424242
+  background: $red
+  box-shadow: 0 1px 3px $shadow-color
   &:hover
-    background: #ff0000
-    box-shadow: 0 2px 7px #424242
+    background: $light-red
+    box-shadow: 0 2px 7px $shadow-color
 
 .btn
   border-radius: 5px
   border: 0
   display: inline-block
-  height: 40px
-  line-height: 40px
+  height: 35px
+  line-height: 35px
   padding: 0 20px
-  color: #FFF
+  color: $white
   transition: background 200ms, box-shadow 150ms
-  box-shadow: 0px 5px 15px -5px #c2c2c2
+  box-shadow: 0px 5px 15px -5px $shadow-color
   text-decoration: none
   &:hover
-    box-shadow: 0px 5px 15px -1px #c2c2c2
+    box-shadow: 0px 5px 15px -1px $shadow-color
   &--default
-    background: #FFF
-    color: #000
-    border: 1px solid #e3e3e3
+    background: $white
+    color: $black
+    border: 1px solid $shadow-color
   &--primary
     background: $purple
     &:hover
@@ -78,12 +79,12 @@ button
     &:hover
       background: $light-blue
   &--danger
-    background: #cf0808
+    background: $red
     &:hover
-      background: #ff0000
+      background: $light-red
 
 .shadow
-  box-shadow: 0 5px 15px #c2c2c2
+  box-shadow: 0 5px 15px $shadow-color
 
 .border-radius
   border-radius: 8px
