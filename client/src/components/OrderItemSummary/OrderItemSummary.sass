@@ -1,11 +1,9 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .order-item
+  @include flex(center, center, column)
   position: relative
-  display: flex
-  align-items: center
-  justify-content: center
-  flex-direction: column
   text-align: center
   padding: 15px
   list-style: none
@@ -21,14 +19,12 @@
     margin-bottom: 10px
     color: $purple
   &__img
-    border-radius: 5px
     overflow: hidden
     height: 110px
     width: 165px
   &__details
-    display: flex
+    @include flex(null, null, column)
     text-align: left
-    flex-direction: column
     margin-right: 20px
   .product__img
     width: auto
@@ -39,9 +35,8 @@
 
 @media (min-width: 700px)
   .order-item
+    @include flex(flex-start)
     text-align: left
-    flex-direction: row
-    align-items: flex-start
     &__wrapper
       order: 0
       margin: 0 20px

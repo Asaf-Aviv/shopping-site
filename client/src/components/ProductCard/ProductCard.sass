@@ -1,16 +1,15 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .product
   padding: 10px 0
   text-align: center
-  border-radius: 8px
   border-top: 5px solid $purple
-  box-shadow: 0 3px 20px $shadow-color
+  box-shadow: 0 3px 10px $shadow-color
+  background: #FFF
   &__header
+    @include flex(center, center)
     position: relative
-    display: flex
-    align-items: center
-    justify-content: center
   &__name
     margin-bottom: 10px
     color: $purple
@@ -21,7 +20,8 @@
     line-height: 1.5
     margin-bottom: 5px
     letter-spacing: 0.5px
-    height: 95px
+    padding: 10px
+    height: 100px
   &__price
     display: inline-block
     margin-bottom: 10px
@@ -36,19 +36,14 @@
 .rating
   font-size: 22px
   &__container
+    @include flex(center, center)
     position: absolute
-    right: 20px
+    right: 10px
     top: -5px
     height: 30px
-    display: flex
-    align-items: center
-    justify-content: center
 
 .add-to-cart
+  @include flex(flex-end, space-around, null, wrap)
   height: 65px
-  display: flex
-  align-items: flex-end
-  flex-wrap: wrap
-  justify-content: space-around
   &__error
     width: 100%

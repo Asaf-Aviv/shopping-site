@@ -1,11 +1,9 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .order__header
-  display: flex
+  @include flex(center, center, column)
   padding: 15px
-  align-items: center
-  justify-content: center
-  flex-direction: column
   border-bottom: 1px solid $purple
   .header__items
     &:not(first-child)

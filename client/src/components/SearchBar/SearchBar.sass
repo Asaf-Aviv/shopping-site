@@ -1,21 +1,20 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .search-bar
   display: none
   flex: 2
   height: 40px
   &__input-wrapper
+    @include flex()
     position: relative
-    display: flex
     height: 100%
-    border-radius: 8px
     max-width: 500px
     margin: 0 auto
     border: 2px solid $purple
     box-shadow: 0 5px 20px -10px $purple
   &__input
     border: none
-    border-radius: 8px
     outline: 0
     padding: 0px 0px 1px 15px
     font-size: 18px
@@ -23,24 +22,21 @@
     flex: 1
     transition: box-shadow 250ms
     &:focus
-      box-shadow: 0 5px 30px -8px $purple
+      box-shadow: 0 5px 25px -8px $purple
   &__results
     display: none
     position: absolute
     top: 45px
     left: 0
     width: 100%
-    border-radius: 8px
     overflow: hidden
     box-shadow: 0 5px 15px $shadow-color
     &--open
       display: block
   &__list
-    background: $white
     position: relative
-    padding 5px 0
     min-height: 80px
-    flex-direction: column
+    background: #FFF
     max-height: 350px
     height: 100%
     overflow-scrolling: touch
@@ -49,14 +45,11 @@
     &::-webkit-scrollbar
       display: none
   &__item
-    display: flex
-    align-items: center
+    @include flex(center)
     padding: 5px 15px
     height: 80px
     text-decoration: none
     color: inherit
-    &:hover
-      background: #f4fffd
     &:not(:first-of-type)
       border-top: 1px solid $purple
   &__img .product__img
@@ -75,7 +68,5 @@
     color: $light-green
     width: 60px
   &__info
+    @include flex(center, center)
     height: 80px
-    display: flex
-    align-items: center
-    justify-content: center

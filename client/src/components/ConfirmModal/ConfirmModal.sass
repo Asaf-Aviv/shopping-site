@@ -1,6 +1,8 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .modal
+  @include flex(center, center)
   cursor: pointer
   position: fixed
   top: 0
@@ -8,9 +10,6 @@
   right: 0
   height: 100vh
   z-index: 999
-  display: flex
-  align-items: center
-  justify-content: center
   background: rgba(0, 0, 0, 0.8)
   &__info
     cursor: default
@@ -19,7 +18,6 @@
   &__title
     margin-bottom: 40px
   &__btn-group
-    display: flex
-    justify-content: flex-end
+    @include flex(null, flex-end)
     > .btn--default
       margin-right: 20px

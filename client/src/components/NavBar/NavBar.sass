@@ -1,16 +1,16 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .nav
+  @include flex(center)
   position: fixed
   padding: 0 20px
   top: 0
   left: 0
   width: 100%
-  display: flex
-  align-items: center
   height: 70px
   box-shadow: 0 2px 5px $shadow-color
-  background: $white
+  background: #FFF
   z-index: 100
   &__toggler
     outline: none
@@ -18,7 +18,7 @@
     border: none
     background: none
   &__responsive
-    display: flex
+    @include flex()
     position: fixed
     top: 0
     left: 0
@@ -32,13 +32,12 @@
   &__brand
     color: $purple
     margin: 0 40px 0 0
+    font-weight: 300
   &__menu
+    @include flex(flex-start, null, column)
     padding: 10vh 0 0 20px
-    display: flex
-    flex-direction: column
-    align-items: flex-start
     list-style: none
-    background: $white
+    background: #FFF
     width: 70%
   &__item
     margin: 10px 0
@@ -48,28 +47,31 @@
     display: inline-block
     position: relative
     user-select: none
-    padding: 10px 0
+    padding: 10px 5px
     font-size: 18px
     text-decoration: none
     font-weight: 700
     color: $light-grey
     letter-spacing: 1px
-    transition: color 300ms ease-in
-    &:hover
+    transition: color 200ms ease
+    &::after
+      content: ''
+      position: absolute
+      height: 1px
+      bottom: 5px
+      right: 0
+      width: 100%
+      z-index: 80
+      background: $purple
+      transform: scale(0)
+      transition: transform 150ms ease
+    &:hover, &--active
       color: $purple
-    &--active
-      color: $purple
-      pointer-events: none
       &::after
-        content: ''
-        position: absolute
-        width: 5px
-        height: 5px
-        border-radius: 50%
-        bottom: 3px
-        right: calc(50% - 3.5px)
-        z-index: 80
-        background: $purple
+        transform: scale(1)
+    &--active
+      pointer-events: none
+
   &__transparent
     cursor: pointer
     width: 30%
@@ -95,12 +97,9 @@
     &__toggler
       display: none
     &__menu
+      @include flex(center)
       padding: 0
-      display: flex
-      align-items: center
-      flex-direction: row
       list-style: none
-      background: $white
       width: 100%
       margin: 0 auto
       .search-bar
@@ -119,3 +118,7 @@
       right: -30px
     > .search-bar
       display: block
+
+@media (max-width: 650px)
+  .nav > .search-bar
+    display: none

@@ -1,6 +1,8 @@
-@import '../App/variables.sass'
+@import '../../sass/variables'
+@import '../../sass/mixins'
 
 .review
+  @include flex(null, null, column)
   position: relative
   padding: 15px
   box-shadow: 0 5px 20px -2px $shadow-color
@@ -8,11 +10,8 @@
   margin: 0 auto 30px
   width: 100%
   max-width: 500px
-  display: flex
-  flex-direction: column
   &__info
-    display: flex
-    align-items: flex-end
+    @include flex(flex-end)
     padding-bottom: 5px
     margin-bottom: 10px
     border-bottom: 1px solid $purple
@@ -25,10 +24,9 @@
     padding-left: 15px
     text-align: left
   &__rating
-    display: flex
+    @include flex(flex-end)
     height: 27px
     padding-bottom: 3px
-    align-items: flex-end
     > span
       font-weight: 700
   &__delete
