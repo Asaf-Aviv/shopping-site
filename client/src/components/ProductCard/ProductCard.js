@@ -90,7 +90,7 @@ class ProductCard extends PureComponent {
     } = product;
 
     return (
-      <li className="product">
+      <li className="product fade-in-fwd">
         <div>
           <div className="product__header">
             <span className="product__name">{name}</span>

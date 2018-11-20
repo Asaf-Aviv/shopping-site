@@ -27,7 +27,7 @@ const Cart = ({
     <main>
       <Container>
         <h1 className="weight-300">My Cart</h1>
-        <ul className="border-radius shadow">
+        <ul className="shadow">
           {products.map((item, i) => (
             <OrderItemSummary
               key={`${item.product._id}${item.color}${item.size}`}

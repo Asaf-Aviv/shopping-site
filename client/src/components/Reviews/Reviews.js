@@ -11,7 +11,7 @@ const Reviews = ({
   reviews, productId, toggleReviews, processing,
 }) => (
   <div
-    className="reviews__container reviews__container--open"
+    className="reviews__container reviews__container--open scale-in-center"
     onClick={toggleReviews}
     onKeyPress={toggleReviews}
     role="link"

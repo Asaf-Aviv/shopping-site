@@ -23,7 +23,7 @@ const Orders = ({ orders }) => {
       <Container>
         <h1 className="weight-300">My Orders</h1>
         {orders.map(order => (
-          <div key={order._id} className="border-radius shadow mb-20">
+          <div key={order._id} className="shadow mb-20">
             <OrderHeader
               orderId={order.orderId}
               timestamp={order.timestamp}

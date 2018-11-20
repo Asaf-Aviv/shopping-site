@@ -6,7 +6,7 @@ import ProductImage from '../ProductImage';
 const StickyCartItem = ({
   color, size, quantity, image, name, removeProduct,
 }) => (
-  <li className="sticky-cart__item">
+  <li className="sticky-cart__item slide-in-left">
     <div className="sticky-cart__img">
       <ProductImage
         imgName={image}
