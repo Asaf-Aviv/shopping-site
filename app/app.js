@@ -5,7 +5,6 @@ const app = express();
 const storeAPI = require('../api/routes/store');
 const ordersAPI = require('../api/routes/orders');
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/api/store', storeAPI, ordersAPI);

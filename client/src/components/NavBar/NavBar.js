@@ -13,17 +13,16 @@ class NavBar extends Component {
     numOfCartItems: PropTypes.number.isRequired,
     numOfOrders: PropTypes.number.isRequired,
     toggleFilterSidebBar: PropTypes.func.isRequired,
-  }
+  };
 
   state = {
     isOpen: false,
-  }
+  };
 
   toggleNav = (() => {
     const body = document.querySelector('body');
 
     return () => {
-      console.log('running');
       this.setState((prevState) => {
         body.style.overflowY = prevState.isOpen ? 'visible' : 'hidden';
         return { isOpen: !prevState.isOpen };
@@ -61,31 +60,19 @@ class NavBar extends Component {
           <ul className="nav__menu" onClick={this.shouldCollapse} role="presentation">
             <h1 className="nav__brand">Shopply</h1>
             <li className="nav__item">
-              <NavLink
-                to="/store"
-                className="nav__link"
-                activeClassName="nav__link--active"
-              >
+              <NavLink to="/store" className="nav__link" activeClassName="nav__link--active">
                 Store
               </NavLink>
             </li>
             <SearchBar />
             <li className="nav__item">
-              <NavLink
-                to="/cart"
-                className="nav__link"
-                activeClassName="nav__link--active"
-              >
+              <NavLink to="/cart" className="nav__link" activeClassName="nav__link--active">
                 Cart
                 {numOfCartItems > 0 && <span className="nav__badge">{numOfCartItems}</span>}
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink
-                to="/orders"
-                className="nav__link"
-                activeClassName="nav__link--active"
-              >
+              <NavLink to="/orders" className="nav__link" activeClassName="nav__link--active">
                 Orders
                 {numOfOrders > 0 && <span className="nav__badge">{numOfOrders}</span>}
               </NavLink>
