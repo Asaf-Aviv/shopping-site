@@ -22,16 +22,16 @@ class Store extends Component {
 
   handleResize = () => {
     this.setWidth();
-  }
+  };
 
   componentDidMount = () => {
     this.setWidth();
     window.addEventListener('resize', this.handleResize);
-  }
+  };
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.handleResize);
-  }
+  };
 
   render() {
     const { width } = this.state;
@@ -44,15 +44,11 @@ class Store extends Component {
         <ErrorBoundary>
           <Products />
         </ErrorBoundary>
-        {width > 835
-          ? (
-            <ErrorBoundary>
-              <StickyCart />
-            </ErrorBoundary>
-          )
-          : null
-        }
-
+        {width >= 1050 ? (
+          <ErrorBoundary>
+            <StickyCart />
+          </ErrorBoundary>
+        ) : null}
       </main>
     );
   }

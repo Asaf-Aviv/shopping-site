@@ -2,13 +2,19 @@
 
 .products__list
   display: grid
-  grid-template-columns:  repeat(auto-fit, minmax(230px, 1fr))
+  grid-template-columns:  repeat(1, minmax(230px, 1fr))
   grid-gap: 20px
   list-style: none
   margin: 0 20px 20px 20px
+  @media(min-width: 550px)
+    grid-template-columns:  repeat(2, minmax(230px, 1fr))
+  @media(min-width: 1300px)
+    grid-template-columns:  repeat(3, minmax(230px, 1fr))
+  @media(min-width: 1560px)
+    grid-template-columns:  repeat(4, minmax(230px, 1fr))
   &-container
     width: 100%
-  @media (min-width: 835px)
+  @media (min-width: 1050px)
     &-container
       width: 70%
 
